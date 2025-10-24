@@ -1,0 +1,10 @@
+<b>Format</b>: xxxxxxxxxxxxxxxx|xx|xxxx|xxx
+
+<b>Arguments</b>: 
+    • <code>Credit Card In Pipe Format</code> (required)
+    
+<b>Authnet Charge</b>
+    <b>Description</b>: No Description Added!
+    <b>Trigger</b>: <code>/an</code>
+    <b>Status</b>: Online ✅
+    <b>Updated</b>: 23/10/2025

@@ -1,0 +1,280 @@
+2025-09-19 23:02:44 | ERROR | telegram | telegram:unknown:0 | ❌ Failed to send message: A Telegram's error: Bad Request: message text is empty
+
+2025-09-19 23:02:50 | ERROR | telegram | telegram:unknown:0 | ❌ Failed to send message: A Telegram's error: Bad Request: message text is empty
+
+2025-09-21 02:36:31 | ERROR | AuthorizeChatPlugin | AuthorizeChatPlugin:unknown:0 | Failed to read file: Bad file descriptor (os error 9)
+
+2025-09-21 02:37:40 | ERROR | AuthorizeChatPlugin | AuthorizeChatPlugin:unknown:0 | Failed to read file: Bad file descriptor (os error 9)
+
+2025-09-21 02:38:15 | ERROR | AuthorizeChatPlugin | AuthorizeChatPlugin:unknown:0 | Failed to read file: Bad file descriptor (os error 9)
+
+2025-09-21 02:39:55 | ERROR | AuthorizeChatPlugin | AuthorizeChatPlugin:unknown:0 | Failed to read file: Bad file descriptor (os error 9)
+
+2025-09-21 02:48:06 | ERROR | AuthorizeChatPlugin | AuthorizeChatPlugin:unknown:0 | Failed to read file: Bad file descriptor (os error 9)
+
+2025-09-21 02:54:39 | ERROR | AuthorizeChatPlugin | AuthorizeChatPlugin:unknown:0 | Failed to read file: Bad file descriptor (os error 9)
+
+2025-09-21 02:55:35 | ERROR | AuthorizeChatPlugin | AuthorizeChatPlugin:unknown:0 | Failed to read file: Bad file descriptor (os error 9)
+
+2025-09-21 02:55:52 | ERROR | AuthorizeChatPlugin | AuthorizeChatPlugin:unknown:0 | Failed to read file: Bad file descriptor (os error 9)
+
+2025-09-21 02:57:04 | ERROR | AuthorizeChatPlugin | AuthorizeChatPlugin:unknown:0 | Failed to read file: Bad file descriptor (os error 9)
+
+2025-09-21 02:58:38 | ERROR | AuthorizeChatPlugin | AuthorizeChatPlugin:unknown:0 | Failed to read file: Bad file descriptor (os error 9)
+
+2025-09-21 02:58:59 | ERROR | AuthorizeChatPlugin | AuthorizeChatPlugin:unknown:0 | Failed to read file: Bad file descriptor (os error 9)
+
+2025-09-21 03:16:48 | ERROR | AuthorizeChatPlugin | AuthorizeChatPlugin:unknown:0 | Failed to read file: Bad file descriptor (os error 9)
+
+2025-09-21 03:24:35 | ERROR | AuthorizeChatPlugin | AuthorizeChatPlugin:unknown:0 | Failed to read file: Bad file descriptor (os error 9)
+
+2025-09-21 03:37:36 | ERROR | telegram | telegram:unknown:0 | ❌ Failed to answer callback query: A Telegram's error: Unknown error: "Bad Request: query is too old and response timeout expired or query ID is invalid"
+
+2025-09-21 03:37:37 | ERROR | telegram | telegram:unknown:0 | ❌ Failed to answer callback query: A Telegram's error: Unknown error: "Bad Request: query is too old and response timeout expired or query ID is invalid"
+
+2025-09-21 03:37:37 | ERROR | telegram | telegram:unknown:0 | ❌ Failed to answer callback query: A Telegram's error: Unknown error: "Bad Request: query is too old and response timeout expired or query ID is invalid"
+
+2025-09-21 04:17:31 | ERROR | AuthorizeChatPlugin | AuthorizeChatPlugin:unknown:0 | Failed to read file: Bad file descriptor (os error 9)
+
+2025-09-21 04:52:08 | ERROR | telegram | telegram:unknown:0 | ❌ Failed to answer callback query: A Telegram's error: Unknown error: "Bad Request: query is too old and response timeout expired or query ID is invalid"
+
+2025-09-21 04:53:44 | ERROR | telegram | telegram:unknown:0 | ❌ Failed to answer callback query: A Telegram's error: Unknown error: "Bad Request: query is too old and response timeout expired or query ID is invalid"
+
+2025-09-21 05:31:08 | ERROR | telegram | telegram:unknown:0 | ❌ Failed to answer callback query: A Telegram's error: Unknown error: "Bad Request: query is too old and response timeout expired or query ID is invalid"
+
+2025-09-21 05:31:09 | ERROR | telegram | telegram:unknown:0 | ❌ Failed to answer callback query: A Telegram's error: Unknown error: "Bad Request: query is too old and response timeout expired or query ID is invalid"
+
+2025-09-21 05:37:11 | ERROR | telegram | telegram:unknown:0 | ❌ Failed to answer callback query: A Telegram's error: Unknown error: "Bad Request: query is too old and response timeout expired or query ID is invalid"
+
+2025-09-22 18:48:11 | ERROR | telegram | telegram:unknown:0 | ❌ Callback handler task failed for data 'page:utility:Generator:3:0': task 15 panicked with message "slice index starts at 90 but ends at 22"
+
+2025-09-22 19:02:03 | ERROR | test_logger | test_logger:unknown:0 | Error message
+
+2025-09-22 19:02:03 | CRITICAL | test_logger | test_logger:unknown:0 | Critical message
+
+2025-09-22 19:02:03 | CRITICAL | critical_macro | critical_macro:unknown:0 | Critical message
+
+2025-09-22 19:02:03 | ERROR | error_macro | error_macro:unknown:0 | Error message
+
+2025-09-22 19:02:03 | CRITICAL | critical_macro | critical_macro:unknown:0 | Critical error: system failure
+
+2025-09-22 19:02:03 | ERROR | error_macro | error_macro:unknown:0 | Error in function: test_function
+
+2025-09-22 19:02:03 | CRITICAL | critical_macro | critical_macro:unknown:0 | Critical: database service is down
+
+2025-09-22 19:02:03 | ERROR | error_macro | error_macro:unknown:0 | Error: syntax error at line 42
+
+2025-09-22 19:02:03 | ERROR | levels_macro | levels_macro:unknown:0 | This is an error message
+
+2025-09-22 19:02:03 | CRITICAL | levels_macro | levels_macro:unknown:0 | This is a critical message
+
+2025-09-22 19:02:03 | ERROR | special_macro | special_macro:unknown:0 | Error with symbols: @#$%^&*()
+
+2025-09-22 19:02:03 | CRITICAL | special_macro | special_macro:unknown:0 | Critical with unicode: 🚨 ⚠️
+
+2025-09-22 21:24:10 | ERROR | telegram | telegram:unknown:0 | ❌ Failed to answer callback query: A Telegram's error: Unknown error: "Bad Request: query is too old and response timeout expired or query ID is invalid"
+
+2025-09-22 21:24:11 | ERROR | telegram | telegram:unknown:0 | ❌ Failed to answer callback query: A Telegram's error: Unknown error: "Bad Request: query is too old and response timeout expired or query ID is invalid"
+
+2025-09-22 21:24:11 | ERROR | telegram | telegram:unknown:0 | ❌ Failed to answer callback query: A Telegram's error: Unknown error: "Bad Request: query is too old and response timeout expired or query ID is invalid"
+
+2025-09-22 21:58:35 | ERROR | telegram | telegram:unknown:0 | ❌ Failed to answer callback query: A Telegram's error: Unknown error: "Bad Request: query is too old and response timeout expired or query ID is invalid"
+
+2025-09-23 00:31:33 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | ❌ Failed to get user client: authorization error: request error: rpc error 400: API_ID_INVALID caused by auth.sendCode
+
+2025-09-23 00:35:20 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | ❌ Failed to get user client: authorization error: request error: rpc error 406: UPDATE_APP_TO_LOGIN caused by auth.sendCode
+
+2025-09-23 00:54:46 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | ❌ Failed to get user client: No such file or directory (os error 2)
+
+2025-09-23 00:56:06 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | ❌ Failed to scrape messages: request error: rpc error 400: CHANNEL_INVALID caused by messages.getHistory
+
+2025-09-23 00:56:28 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | ❌ Failed to scrape messages: request error: rpc error 400: CHANNEL_INVALID caused by messages.getHistory
+
+2025-09-23 00:56:43 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | ❌ Failed to scrape messages: request error: rpc error 400: CHANNEL_INVALID caused by messages.getHistory
+
+2025-09-23 00:57:53 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | ❌ Failed to scrape messages: request error: rpc error 400: CHANNEL_INVALID caused by messages.getHistory
+
+2025-09-23 00:58:31 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | ❌ Failed to scrape messages: request error: rpc error 400: CHANNEL_INVALID caused by messages.getHistory
+
+2025-09-23 01:01:08 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | ❌ Failed to scrape messages: Failed to resolve channel
+
+2025-09-23 01:01:29 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | ❌ Failed to scrape messages: Failed to resolve channel
+
+2025-09-23 01:02:47 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | GetChannels failed for ID 50: Rpc(RpcError { code: 400, name: "CHANNEL_INVALID", value: None, caused_by: Some(176122811) }), trying direct approach
+
+2025-09-23 01:02:47 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | ❌ Failed to scrape messages: Failed to get message history for 50: Rpc(RpcError { code: 400, name: "CHANNEL_INVALID", value: None, caused_by: Some(1143203525) })
+
+2025-09-23 01:03:24 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | GetChannels failed for ID 50: Rpc(RpcError { code: 400, name: "CHANNEL_INVALID", value: None, caused_by: Some(176122811) }), trying direct approach
+
+2025-09-23 01:03:24 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | ❌ Failed to scrape messages: Channel '50' is invalid, private, or doesn't exist. Make sure the channel ID is correct and the bot has access to it.
+
+2025-09-23 01:03:34 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | GetChannels failed for ID 100: Rpc(RpcError { code: 400, name: "CHANNEL_INVALID", value: None, caused_by: Some(176122811) }), trying direct approach
+
+2025-09-23 01:03:34 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | ❌ Failed to scrape messages: Channel '100' is invalid, private, or doesn't exist. Make sure the channel ID is correct and the bot has access to it.
+
+2025-09-23 01:03:56 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | GetChannels failed for ID 50: Rpc(RpcError { code: 400, name: "CHANNEL_INVALID", value: None, caused_by: Some(176122811) }), trying direct approach
+
+2025-09-23 01:03:56 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | ❌ Failed to scrape messages: Channel '50' is invalid, private, or doesn't exist. Make sure the channel ID is correct and the bot has access to it.
+
+2025-09-23 01:46:25 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | GetChannels failed for ID 100: Rpc(RpcError { code: 400, name: "CHANNEL_INVALID", value: None, caused_by: Some(176122811) }), trying direct approach
+
+2025-09-23 01:46:25 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | ❌ Channel '100' is invalid, private, or doesn't exist. Make sure the channel ID is correct and the bot has access to it.
+
+2025-09-23 01:46:46 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | GetChannels failed for ID 100: Rpc(RpcError { code: 400, name: "CHANNEL_INVALID", value: None, caused_by: Some(176122811) }), trying direct approach
+
+2025-09-23 01:46:46 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | ❌ Channel '100' is invalid, private, or doesn't exist. Make sure the channel ID is correct and the bot has access to it.
+
+2025-09-23 01:48:02 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | GetChannels failed for ID 100: Rpc(RpcError { code: 400, name: "CHANNEL_INVALID", value: None, caused_by: Some(176122811) }), trying direct approach
+
+2025-09-23 01:48:02 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | ❌ Channel '100' is invalid, private, or doesn't exist. Make sure the channel ID is correct and the bot has access to it.
+
+2025-09-23 01:48:08 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | ❌ Failed to resolve username @heckervaultscrapper: request error: rpc error 400: USERNAME_INVALID caused by contacts.resolveUsername
+
+2025-09-23 01:48:08 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | ❌ Failed to resolve username @heckervaultscrapper: request error: rpc error 400: USERNAME_INVALID caused by contacts.resolveUsername
+
+2025-09-23 01:48:50 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | GetChannels failed for ID 100: Rpc(RpcError { code: 400, name: "CHANNEL_INVALID", value: None, caused_by: Some(176122811) }), trying direct approach
+
+2025-09-23 01:48:50 | ERROR | KUtilities_scr | KUtilities_scr:unknown:0 | ❌ Channel '100' is invalid, private, or doesn't exist. Make sure the channel ID is correct and the bot has access to it.
+
+2025-09-23 02:45:43 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task failed: task 30 panicked with message "called `Result::unwrap()` on an `Err` value: Sqlx(PoolTimedOut)"
+
+2025-09-23 02:45:49 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task failed: task 32 panicked with message "called `Result::unwrap()` on an `Err` value: Sqlx(PoolTimedOut)"
+
+2025-09-23 02:45:49 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task failed: task 34 panicked with message "called `Result::unwrap()` on an `Err` value: Sqlx(PoolTimedOut)"
+
+2025-09-23 02:45:50 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task failed: task 36 panicked with message "called `Result::unwrap()` on an `Err` value: Sqlx(PoolTimedOut)"
+
+2025-09-23 02:48:21 | ERROR | telegram | telegram:unknown:0 | ❌ Failed to answer callback query: A Telegram's error: Unknown error: "Bad Request: query is too old and response timeout expired or query ID is invalid"
+
+2025-09-23 02:48:22 | ERROR | telegram | telegram:unknown:0 | ❌ Failed to answer callback query: A Telegram's error: Unknown error: "Bad Request: query is too old and response timeout expired or query ID is invalid"
+
+2025-09-23 02:56:12 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task failed: task 126 panicked with message "called `Result::unwrap()` on an `Err` value: RetryAfter(Seconds(29))"
+
+2025-09-23 02:56:12 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task failed: task 105 panicked with message "called `Result::unwrap()` on an `Err` value: RetryAfter(Seconds(29))"
+
+2025-09-23 02:56:12 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task failed: task 115 panicked with message "called `Result::unwrap()` on an `Err` value: RetryAfter(Seconds(29))"
+
+2025-09-23 03:29:58 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task timed out after 1 minute
+
+2025-09-23 03:30:02 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task timed out after 1 minute
+
+2025-09-23 03:33:12 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task timed out after 1 minute
+
+2025-09-23 03:33:13 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task timed out after 1 minute
+
+2025-09-23 03:33:14 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task timed out after 1 minute
+
+2025-09-23 03:34:50 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task timed out after 1 minute
+
+2025-09-23 03:34:51 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task timed out after 1 minute
+
+2025-09-23 03:34:51 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task timed out after 1 minute
+
+2025-09-23 03:34:52 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task timed out after 1 minute
+
+2025-09-23 03:34:55 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task timed out after 1 minute
+
+2025-09-23 03:48:47 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task timed out after 1 minute
+
+2025-09-23 03:48:47 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task timed out after 1 minute
+
+2025-09-23 03:48:48 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task timed out after 1 minute
+
+2025-09-23 03:48:49 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task timed out after 1 minute
+
+2025-09-23 03:48:50 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task timed out after 1 minute
+
+2025-09-23 03:48:52 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task timed out after 1 minute
+
+2025-10-22 06:51:49 | ERROR | ScraperPlugin | ScraperPlugin:unknown:0 | ❌ Scraping task failed: task 27 panicked with message "called `Result::unwrap()` on an `Err` value: Connection(\"Failed to get SQL instance: Connection error: error communicating with database: failed to lookup address information: Name or service not known\")"
+
+2025-10-22 07:33:52 | CRITICAL | error_handler | error_handler:unknown:0 | 🚨 **CRITICAL PANIC DETECTED** 🚨
+
+**Location:** src/plugins/gateways/vbv.rs:444:14
+**Message:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"br\" at byte offset 19"))
+**Timestamp:** 2025-10-22 07:33:52 UTC
+
+The bot has encountered a critical error and needs to be restarted.
+
+2025-10-22 07:33:52 | ERROR | error_handler | error_handler:unknown:0 | ⚠️ **Task Error** ⚠️
+
+**Task:** message_handler
+**Error:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"br\" at byte offset 19"))
+**Timestamp:** 2025-10-22 07:33:52 UTC
+
+2025-10-22 07:34:06 | CRITICAL | error_handler | error_handler:unknown:0 | 🚨 **CRITICAL PANIC DETECTED** 🚨
+
+**Location:** src/plugins/gateways/vbv.rs:444:14
+**Message:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"br\" at byte offset 19"))
+**Timestamp:** 2025-10-22 07:34:06 UTC
+
+The bot has encountered a critical error and needs to be restarted.
+
+2025-10-22 07:34:06 | ERROR | error_handler | error_handler:unknown:0 | ⚠️ **Task Error** ⚠️
+
+**Task:** message_handler
+**Error:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"br\" at byte offset 19"))
+**Timestamp:** 2025-10-22 07:34:06 UTC
+
+2025-10-22 07:57:17 | ERROR | database_helper | database_helper:unknown:0 | ❌ Database connection failed: Connection error: Failed to get SQL instance: Connection error: error returned from database: 1040 (08004): Too many connections
+
+2025-10-22 08:01:40 | ERROR | database_helper | database_helper:unknown:0 | ❌ Database health check failed: Connection error: Failed to get SQL instance: Connection error: error returned from database: 1040 (08004): Too many connections
+
+2025-10-22 08:01:44 | ERROR | database_helper | database_helper:unknown:0 | ❌ Database health check failed: Connection error: Failed to get SQL instance: Connection error: error returned from database: 1040 (08004): Too many connections
+
+2025-10-22 08:01:46 | ERROR | database_helper | database_helper:unknown:0 | ❌ Database health check failed: Connection error: Failed to get SQL instance: Connection error: error returned from database: 1040 (08004): Too many connections
+
+2025-10-22 08:01:55 | ERROR | database_helper | database_helper:unknown:0 | ❌ Database health check failed: Connection error: Failed to get SQL instance: Connection error: error returned from database: 1040 (08004): Too many connections
+
+2025-10-22 08:01:59 | ERROR | database_helper | database_helper:unknown:0 | ❌ Database health check failed: Connection error: Failed to get SQL instance: Connection error: error returned from database: 1040 (08004): Too many connections
+
+2025-10-22 08:02:00 | ERROR | database_helper | database_helper:unknown:0 | ❌ Database health check failed: Connection error: Failed to get SQL instance: Connection error: error returned from database: 1040 (08004): Too many connections
+
+2025-10-22 08:03:15 | ERROR | database_helper | database_helper:unknown:0 | ❌ Database health check failed: Connection error: Failed to get SQL instance: Connection error: error returned from database: 1040 (08004): Too many connections
+
+2025-10-22 08:05:44 | ERROR | database_helper | database_helper:unknown:0 | ❌ Database health check failed: Connection error: Failed to get SQL instance: Connection error: error returned from database: 1040 (08004): Too many connections
+
+2025-10-22 08:23:30 | ERROR | error_handler | error_handler:unknown:0 | ⚠️ **Task Error** ⚠️
+
+**Task:** message_handler
+**Error:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Can't find end tag corresponding to start tag \"b\""))
+**Timestamp:** 2025-10-22 08:23:30 UTC
+
+2025-10-22 08:23:30 | CRITICAL | error_handler | error_handler:unknown:0 | 🚨 **CRITICAL ERROR DETECTED** 🚨
+
+**Location:** src/plugins/gateways/vbv.rs:164:14
+**Message:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Can't find end tag corresponding to start tag \"b\""))
+**Timestamp:** 2025-10-22 08:23:30 UTC
+
+The bot encountered an error. Please try again.
+
+2025-10-22 08:23:44 | ERROR | error_handler | error_handler:unknown:0 | ⚠️ **Task Error** ⚠️
+
+**Task:** message_handler
+**Error:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Can't find end tag corresponding to start tag \"b\""))
+**Timestamp:** 2025-10-22 08:23:44 UTC
+
+2025-10-22 08:23:44 | CRITICAL | error_handler | error_handler:unknown:0 | 🚨 **CRITICAL ERROR DETECTED** 🚨
+
+**Location:** src/plugins/gateways/vbv.rs:164:14
+**Message:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Can't find end tag corresponding to start tag \"b\""))
+**Timestamp:** 2025-10-22 08:23:44 UTC
+
+The bot encountered an error. Please try again.
+
+2025-10-22 09:20:28 | ERROR | error_handler | error_handler:unknown:0 | ⚠️ **Task Error** ⚠️
+
+**Task:** message_handler
+**Error:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-22 09:20:28 UTC
+
+2025-10-22 09:20:28 | CRITICAL | error_handler | error_handler:unknown:0 | 🚨 **CRITICAL ERROR DETECTED** 🚨
+
+**Location:** src/plugins/gateways/pp.rs:192:14
+**Message:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-22 09:20:28 UTC
+
+The bot encountered an error. Please try again.
+
+2025-10-24 16:09:21 | ERROR | AuthorizeChatPlugin | AuthorizeChatPlugin:unknown:0 | Failed to read file: Bad file descriptor (os error 9)
+

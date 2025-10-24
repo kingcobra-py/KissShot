@@ -1,0 +1,10 @@
+<b>Format</b>: xxxxxxxxxxxxxxxx|xx|xxxx|xxx
+
+<b>Arguments</b>: 
+    • <code>Credit Card In Pipe Format</code> (required)
+    
+<b>Braintree 3DS2 Lookup</b>
+    <b>Description</b>: No Description Added!
+    <b>Trigger</b>: <code>/vbv</code>
+    <b>Status</b>: Online ✅
+    <b>Updated</b>: 22/10/2025

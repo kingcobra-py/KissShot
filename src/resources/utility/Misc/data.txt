@@ -1,0 +1,44 @@
+<b>📦 KissShot Misc Module</b>
+
+<b>ℹ️ Information</b>: 
+<i>This module has tools to extended utility functionality.</i>
+
+<b>SK Checker</b>
+    <b>Description</b>: Filters Credits Cards Out In A Pipe Format From Source
+    <b>Trigger</b>: <code>/sk</code>
+    <b>Arguments</b>:
+        • <code>Sk Keys</code> (required)
+
+<b>CC Filter</b>
+    <b>Description</b>: Filters Credits Cards Out In A Pipe Format From Source
+    <b>Trigger</b>: <code>/filter</code>
+    <b>Arguments</b>:
+        • <code>text</code> (required)
+
+<b>Proxy Fetch</b>
+    <b>Description</b>: Fetches Target Proxy From Various Sources
+    <b>Trigger</b>: <code>/proxy</code>
+    <b>Arguments</b>:
+        • <code>Proxy Type</code> (optional)
+
+
+
+
+
+
+
+
+<b>Account Information Lookup</b>
+    <b>Description</b>: Show Account Information Saved On Database
+    <b>Trigger</b>: <code>/me, /id, /status</code>
+
+<b>Code Redemeption</b>
+    <b>Description</b>: Redeem A Gift Code
+    <b>Trigger</b>: <code>/redeem</code>
+    <b>Arguments</b>:
+        • <code>Gift Code</code> (required)
+
+<b>Welcome New Users</b>
+    <b>Description</b>: Automatically Send A Welcome Message Upon A User Joining Group
+
+

@@ -1,0 +1,16 @@
+<b>📦 KissShot Generator Module</b>
+
+<b>ℹ️ Information</b>: 
+<i>This module has tools to lookup various kinds of data.</i>
+
+<b>BIN Information Lookup</b>
+    <b>Description</b>: Checks BIN Information Based On User Input
+    <b>Trigger</b>: <code>/bin</code>
+    <b>Arguments</b>:
+        • <code>bin</code> (required)
+
+<b>IP Information Lookup</b>
+    <b>Description</b>: Checks IP Information Based On User Input
+    <b>Trigger</b>: <code>/skgen</code>
+    <b>Arguments</b>:
+        • <code>ip</code> (required)

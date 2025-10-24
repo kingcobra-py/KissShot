@@ -1,0 +1,69 @@
+[Telegram]
+    [Telegram.BOT]
+        API_ID       = "8875670"
+        API_HASH     = "f7a7079ea12f90a262c83f2d5c275bb2"
+        BOT_TOKEN    = "8381348700:AAEz4nPbRoAHpoky8gcLDi9ad09xz_y5eVc"
+
+    [Telegram.USER]
+        API_ID       = "8875670"
+        API_HASH     = "f7a7079ea12f90a262c83f2d5c275bb2"
+        PHONE_NUMBER = "+8801872871756"
+
+
+[Database]
+    [Database.SQL]
+        URI          = "mysql://avnadmin:AVNS_QxreB4yPSVnbQuWvXfp@mysql-3f6236ad-jhackur445-963c.g.aivencloud.com:12888/defaultdb?ssl-mode=REQUIRED"
+        HOST         = "mysql-3f6236ad-jhackur445-963c.g.aivencloud.com"
+        PORT         = 12888
+        USER         = "avnadmin"
+        PASSWORD     = "AVNS_QxreB4yPSVnbQuWvXfp"
+        DATABASE     = "defaultdb"
+
+    [Database.REDIS]
+        URI          = "rediss://default:AVNS_rnfjAvsolU2pZ7ZdQm_@valkey-3235656f-jhackur445-963c.i.aivencloud.com:12889"
+        HOST         = "valkey-3235656f-jhackur445-963c.i.aivencloud.com"
+        PORT         = 12889
+        USER         = "default"
+        PASSWORD     = "AVNS_rnfjAvsolU2pZ7ZdQm_"
+
+
+[Teloxide]
+    WORKDIR        = "KWorkdir"
+    SESSION_NAME   = "KissShot_BotClient"
+    WORKERS        = 10
+    PLUGINS_DIR    = "KPlugins"
+    PARSE_MODE     = "HTML"
+    TIMEOUT        = 30
+    REQUEST_CONCURRENCY = 100
+    MAX_NETWORK_RETRIES = 3
+    API_URL        = ""
+    LOGGING        = true
+
+
+[Config]
+    [Config.BASIC]
+        ADMIN        = [766109755]
+        CHANNEL      = "heckervault"
+        GROUP        = "heckervaultchat"
+
+    [Config.LIMITS]
+        MAX_CC_SCR   = 3001
+        MAX_SK_SCR   = 3001
+        MAX_CC_CHK   = 5
+        MAX_SK_CHK   = 20
+
+    [Config.REGEX]
+        CC_REGEX     = '[0-9]{16}[|][0-9]{1,2}[|][0-9]{2,4}[|][0-9]{3}'
+        SK_REGEX     = 'sk_live_\\S+'
+        BIN_REGEX    = '^[0-9]{16}$'
+
+    [Config.GIFT_CODE]
+        PREFIX       = "HeckerVault_"
+
+    [Config.PROXY]
+        PROXY        = "http://celltopg-rotate:2k6cqcxcfhc3@p.webshare.io:80/"
+
+    [Config.DEFAULT_USER_VALUE]
+        ANTISPAM = 30
+        BALANCE = 0
+        STATUS = "FREE"

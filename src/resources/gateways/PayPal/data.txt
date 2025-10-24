@@ -1,0 +1,10 @@
+<b>Format</b>: xxxxxxxxxxxxxxxx|xx|xxxx|xxx
+
+<b>Arguments</b>: 
+    • <code>Credit Card In Pipe Format</code> (required)
+    
+<b>PayPal Auth</b>
+    <b>Description</b>: No Description Added!
+    <b>Trigger</b>: <code>/pp</code>
+    <b>Status</b>: Online ✅
+    <b>Updated</b>: 22/10/2025

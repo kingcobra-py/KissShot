@@ -1,0 +1,19 @@
+<b>📦 KissShot Scrapper Module</b>
+
+<b>ℹ️ Information</b>: 
+<i>This module has tools to gather various kinds of data.</i>
+
+<b>CC Scrapper</b>
+    <b>Description</b>: Scrapes Credit Cards Based On User Input
+    <b>Trigger</b>: <code>/scr</code>
+    <b>Arguments</b>:
+        • <code>chat_id</code> (required)
+        • <code>amount</code> (required)
+        • <code>bin</code> (optional)
+
+<b>SK Generator</b>
+    <b>Description</b>: Scrapes SK Based On User Input
+    <b>Trigger</b>: <code>/skscr</code>
+    <b>Arguments</b>:
+        • <code>chat_id</code> (required)
+        • <code>amount</code> (optional)

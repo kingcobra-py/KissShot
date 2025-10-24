@@ -1,0 +1,22 @@
+<b>📦 KissShot Generator Module</b>
+
+<b>ℹ️ Information</b>: 
+<i>This module has tools to generate various kinds of data.</i>
+
+<b>CC Generator</b>
+    <b>Description</b>: Generates Credit Cards Based On User Inputs
+    <b>Trigger</b>: <code>/gen</code>
+    <b>Arguments</b>:
+        • <code>bin</code> (required)
+        • <code>expiry_month</code> (optional)
+        • <code>expiry_year</code> (optional)
+        • <code>cvv</code> (optional)
+        • <code>amount</code> (optional)
+
+<b>SK Generator</b>
+    <b>Description</b>: Generates SK Based On User Input
+    <b>Trigger</b>: <code>/skgen</code>
+    <b>Arguments</b>:
+        • <code>amount</code> (required)
+        • <code>prefix</code> (optional)
+        • <code>length</code> (optional)
