@@ -2,7 +2,7 @@
     [Telegram.BOT]
         API_ID       = "8875670"
         API_HASH     = "f7a7079ea12f90a262c83f2d5c275bb2"
-        BOT_TOKEN    = "8381348700:AAEz4nPbRoAHpoky8gcLDi9ad09xz_y5eVc"
+        BOT_TOKEN    = "8393809259:AAGDft3cxGYOIjwlMryLoqPncYCol9W_NGs"
 
     [Telegram.USER]
         API_ID       = "8875670"

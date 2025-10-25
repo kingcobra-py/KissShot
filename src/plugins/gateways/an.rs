@@ -242,6 +242,7 @@ impl ANPlugin {
         }
 
         let mut results = Vec::new();
+        let mut an_responses: Vec<Option<String>> = Vec::new();
         let start_time = std::time::Instant::now();
 
         for cc in credit_cards_list.iter() {
@@ -252,6 +253,7 @@ impl ANPlugin {
                     "<code>{}</code>\n<b>Status:</b> Invalid",
                     cc.replace(" | ", "|")
                 ));
+                an_responses.push(None);
             } else {
                 match lookup_an(cc).await {
                     Ok(response) => {
@@ -265,12 +267,14 @@ impl ANPlugin {
                             cc.replace(" | ", "|"),
                             status
                         ));
+                        an_responses.push(Some(response));
                     }
                     Err(_) => {
                         results.push(format!(
                             "<code>{}</code>\n<b>Status:</b> Error",
                             cc.replace(" | ", "|")
                         ));
+                        an_responses.push(None);
                     }
                 }
             }
@@ -313,39 +317,36 @@ impl ANPlugin {
             let proxy_str = if proxy_live { "Live" } else { "Off" };
 
             // Get the actual response to determine both status and response text
-            let (status, response_text) = match lookup_an(credit_cards_list[0]).await {
-                Ok(resp) if !resp.is_empty() => {
-                    let is_approved =
-                        resp.contains("Your order has been received.") || resp.contains("Approved");
-                    let status = if is_approved {
-                        "Approved ✅"
-                    } else {
-                        "Declined ❌"
-                    };
+            let (status, response_text) = if let Some(Some(resp)) = an_responses.get(0) {
+                let is_approved =
+                    resp.contains("Your order has been received.") || resp.contains("Approved");
+                let status = if is_approved {
+                    "Approved ✅"
+                } else {
+                    "Declined ❌"
+                };
 
-                    let mut txt = resp.replace("✅", "").replace("❌", "").trim().to_string();
+                let mut txt = resp.replace("✅", "").replace("❌", "").trim().to_string();
 
-                    // Clean up response text
-                    if txt.contains("Gateway Error!") {
-                        txt = "Gateway Error!".to_string();
-                    }
-
-                    (status, txt)
+                // Clean up response text
+                if txt.contains("Gateway Error!") {
+                    txt = "Gateway Error!".to_string();
                 }
-                _ => {
-                    let is_approved = results[0].contains("Approved");
-                    let status = if is_approved {
-                        "Approved ✅"
-                    } else {
-                        "Declined ❌"
-                    };
-                    let response_text = if is_approved {
-                        "Approved".to_string()
-                    } else {
-                        "Declined".to_string()
-                    };
-                    (status, response_text)
-                }
+
+                (status, txt)
+            } else {
+                let is_approved = results[0].contains("Approved");
+                let status = if is_approved {
+                    "Approved ✅"
+                } else {
+                    "Declined ❌"
+                };
+                let response_text = if is_approved {
+                    "Approved".to_string()
+                } else {
+                    "Declined".to_string()
+                };
+                (status, response_text)
             };
 
             let bin_info = match lookup_bin(&credit_cards_list[0][..6]).await {

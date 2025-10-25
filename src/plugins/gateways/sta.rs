@@ -186,6 +186,7 @@ impl STAPlugin {
         }
 
         let mut results = Vec::new();
+        let mut sta_responses: Vec<Option<String>> = Vec::new();
         let start_time = std::time::Instant::now();
 
         for cc in credit_cards_list.iter() {
@@ -196,6 +197,7 @@ impl STAPlugin {
                     "<code>{}</code>\n<b>Status:</b> Invalid",
                     cc.replace(" | ", "|")
                 ));
+                sta_responses.push(None);
             } else {
                 match lookup_sta(cc).await {
                     Ok(response) => {
@@ -209,12 +211,14 @@ impl STAPlugin {
                             cc.replace(" | ", "|"),
                             status
                         ));
+                        sta_responses.push(Some(response));
                     }
                     Err(_) => {
                         results.push(format!(
                             "<code>{}</code>\n<b>Status:</b> Error",
                             cc.replace(" | ", "|")
                         ));
+                        sta_responses.push(None);
                     }
                 }
             }
@@ -257,54 +261,51 @@ impl STAPlugin {
             let proxy_str = if proxy_live { "Live" } else { "Off" };
 
             // Get the actual response to determine both status and response text
-            let (status, response_text) = match lookup_sta(credit_cards_list[0]).await {
-                Ok(resp) if !resp.is_empty() => {
-                    let is_approved = resp.contains("Approved") || resp.contains("Live");
-                    let status = if is_approved {
-                        "Approved ✅"
-                    } else {
-                        "Declined ❌"
-                    };
+            let (status, response_text) = if let Some(Some(resp)) = sta_responses.get(0) {
+                let is_approved = resp.contains("Approved") || resp.contains("Live");
+                let status = if is_approved {
+                    "Approved ✅"
+                } else {
+                    "Declined ❌"
+                };
 
-                    let mut txt = resp.replace("✅", "").replace("❌", "").trim().to_string();
+                let mut txt = resp.replace("✅", "").replace("❌", "").trim().to_string();
 
-                    // Remove "Approved -" prefix if present
-                    if txt.starts_with("Approved - ") {
-                        txt = txt[11..].trim().to_string();
-                    } else if txt.starts_with("Approved ") {
-                        txt = txt[9..].trim().to_string();
-                    }
+                // Remove "Approved -" prefix if present
+                if txt.starts_with("Approved - ") {
+                    txt = txt[11..].trim().to_string();
+                } else if txt.starts_with("Approved ") {
+                    txt = txt[9..].trim().to_string();
+                }
 
-                    // If the response looks verbose (contains Status/Request metadata), keep only the final human message
-                    if txt.contains("Request ") || txt.contains("Status ") {
-                        if let Some(idx) = txt.rfind(") ") {
-                            let tail = txt[idx + 2..].trim();
-                            if !tail.is_empty() {
-                                txt = tail.to_string();
-                            }
-                        } else if let Some(idx) = txt.rfind(" - ") {
-                            let tail = txt[idx + 3..].trim();
-                            if !tail.is_empty() {
-                                txt = tail.to_string();
-                            }
+                // If the response looks verbose (contains Status/Request metadata), keep only the final human message
+                if txt.contains("Request ") || txt.contains("Status ") {
+                    if let Some(idx) = txt.rfind(") ") {
+                        let tail = txt[idx + 2..].trim();
+                        if !tail.is_empty() {
+                            txt = tail.to_string();
+                        }
+                    } else if let Some(idx) = txt.rfind(" - ") {
+                        let tail = txt[idx + 3..].trim();
+                        if !tail.is_empty() {
+                            txt = tail.to_string();
                         }
                     }
-                    (status, txt)
                 }
-                _ => {
-                    let is_approved = results[0].contains("Approved");
-                    let status = if is_approved {
-                        "Approved ✅"
-                    } else {
-                        "Declined ❌"
-                    };
-                    let response_text = if is_approved {
-                        "Approved".to_string()
-                    } else {
-                        "Declined".to_string()
-                    };
-                    (status, response_text)
-                }
+                (status, txt)
+            } else {
+                let is_approved = results[0].contains("Approved");
+                let status = if is_approved {
+                    "Approved ✅"
+                } else {
+                    "Declined ❌"
+                };
+                let response_text = if is_approved {
+                    "Approved".to_string()
+                } else {
+                    "Declined".to_string()
+                };
+                (status, response_text)
             };
 
             let bin_info = match lookup_bin(&credit_cards_list[0][..6]).await {
