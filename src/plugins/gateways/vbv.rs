@@ -116,6 +116,7 @@ impl VBVPlugin {
         }
 
         let mut results = Vec::new();
+        let mut vbv_responses: Vec<Option<(String, String, String)>> = Vec::new();
         let start_time = std::time::Instant::now();
 
         for cc in credit_cards_list.iter() {
@@ -126,9 +127,10 @@ impl VBVPlugin {
                     "<code>{}</code>\n<b>Status:</b> Invalid",
                     cc.replace(" | ", "|")
                 ));
+                vbv_responses.push(None);
             } else {
                 match lookup_vbv(cc).await {
-                    Ok((_, response, _)) => {
+                    Ok((bin, response, enrolled)) => {
                         let status = if response.contains("Authenticate Successful")
                             || response.contains("Authenticate Attempt Successful")
                         {
@@ -141,12 +143,14 @@ impl VBVPlugin {
                             cc.replace(" | ", "|"),
                             status
                         ));
+                        vbv_responses.push(Some((bin, response, enrolled)));
                     }
                     Err(_) => {
                         results.push(format!(
                             "<code>{}</code>\n<b>Status:</b> Error",
                             cc.replace(" | ", "|")
                         ));
+                        vbv_responses.push(None);
                     }
                 }
             }
@@ -194,16 +198,20 @@ impl VBVPlugin {
                 "Rejected ❌"
             };
             // Use raw VBV response for the "Response:" line (do not change the top status)
-            let response_text = match lookup_vbv(credit_cards_list[0]).await {
-                Ok((_, resp, _)) if !resp.is_empty() => {
+            let response_text = if let Some(Some((_, resp, _))) = vbv_responses.get(0) {
+                if !resp.is_empty() {
+                    // Remove emojis from response but keep the text
                     resp.replace("✅", "").replace("❌", "").trim().to_string()
+                } else if results[0].contains("Approved") {
+                    "Passed".to_string()
+                } else {
+                    "Rejected".to_string()
                 }
-                _ => {
-                    if results[0].contains("Approved") {
-                        "Passed".to_string()
-                    } else {
-                        "Rejected".to_string()
-                    }
+            } else {
+                if results[0].contains("Approved") {
+                    "Passed".to_string()
+                } else {
+                    "Rejected".to_string()
                 }
             };
 

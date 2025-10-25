@@ -114,6 +114,7 @@ impl PPPlugin {
         }
 
         let mut results = Vec::new();
+        let mut pp_responses: Vec<Option<(String, String)>> = Vec::new();
         let start_time = std::time::Instant::now();
 
         for cc in credit_cards_list.iter() {
@@ -126,6 +127,7 @@ impl PPPlugin {
                     "<code>{}</code>\n<b>Status:</b> Invalid",
                     normalized
                 ));
+                pp_responses.push(None);
             } else {
                 match lookup_pp(&normalized).await {
                     Ok((response_type, message)) => {
@@ -141,9 +143,11 @@ impl PPPlugin {
                             "<code>{}</code>\n<b>Status:</b> {}",
                             normalized, status
                         ));
+                        pp_responses.push(Some((response_type, message)));
                     }
                     Err(_) => {
                         results.push(format!("<code>{}</code>\n<b>Status:</b> Error", normalized));
+                        pp_responses.push(None);
                     }
                 }
             }
@@ -193,8 +197,8 @@ impl PPPlugin {
             } else {
                 "Declined ❌"
             };
-            let response_text = match lookup_pp(&normalized).await {
-                Ok((_, message)) if !message.is_empty() => {
+            let response_text = if let Some(Some((_, message))) = pp_responses.get(0) {
+                if !message.is_empty() {
                     let msg = message.trim();
                     // Capitalize first letter of each word, lowercasing the rest
                     msg.split_whitespace()
@@ -210,13 +214,18 @@ impl PPPlugin {
                         })
                         .collect::<Vec<String>>()
                         .join(" ")
-                }
-                _ => {
+                } else {
                     if results[0].contains("Approved") {
                         "Approved".to_string()
                     } else {
                         "Declined".to_string()
                     }
+                }
+            } else {
+                if results[0].contains("Approved") {
+                    "Approved".to_string()
+                } else {
+                    "Declined".to_string()
                 }
             };
 
