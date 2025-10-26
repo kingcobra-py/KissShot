@@ -134,9 +134,13 @@ impl CHKPlugin {
                 match lookup_chk(cc).await {
                     Ok((bin, response, enrolled)) => {
                         let status = if response.contains("Payment completed")
+                            || response.contains("Payment processed")
+                            || response.contains("Authentication required")
+                            || response.contains("Verification required")
                             || response.contains("insufficient funds")
-                            || response.contains("invalid cvc")
+                            || response.contains("security code is incorrect")
                             || response.contains("this type of purchase")
+                            || response.contains("Invalid account")
                         {
                             "Approved ✅"
                         } else {
@@ -492,7 +496,7 @@ pub async fn lookup_chk(cc: &str) -> Result<(String, String, String), String> {
     if response_text.contains("Payment completed") 
         || response_text.contains("success")
         || response_text.contains("completed") {
-        return Ok((bin, "Payment processed".to_string(), String::new()));
+        return Ok((bin, "Payment completed.".to_string(), String::new()));
     }
     
     // Check for authentication/verification responses

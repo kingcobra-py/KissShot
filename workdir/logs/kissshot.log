@@ -22962,3 +22962,67 @@ The bot encountered an error. Please try again.
 
 2025-10-26 20:54:54 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
 
+2025-10-26 21:29:52 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 21:29:52 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 21:29:52 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 21:29:52 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 21:29:52 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 21:29:52 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 21:29:52 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 21:29:52 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 21:29:52 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 21:29:57 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 766109755: /chk 5196032162590653|12|2027|562
+
+2025-10-26 21:29:57 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5196032162590653|12|2027|562'
+
+2025-10-26 21:29:59 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 21:30:00 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 552.933895ms
+
+2025-10-26 21:30:00 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 21:30:00 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 21:30:00 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 21:30:00 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 21:30:08 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 21:30:28 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 766109755: /chk 4400668754295048|06|2030|163
+
+2025-10-26 21:30:28 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '4400668754295048|06|2030|163'
+
+2025-10-26 21:30:28 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 21:30:29 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 21:30:29 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 21:30:29 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 21:30:36 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 21:30:43 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 766109755: /pp /chk 4400668754295048|06|2030|163
+
+2025-10-26 21:30:43 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/pp', body: '/chk 4400668754295048|06|2030|163'
+
+2025-10-26 21:30:44 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 21:30:44 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 21:30:44 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 21:30:44 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 21:31:00 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
