@@ -134,8 +134,8 @@ impl CHKPlugin {
                 match lookup_chk(cc).await {
                     Ok((bin, response, enrolled)) => {
                         let status = if response.contains("Payment completed")
-                            || response.contains("Insufficient funds")
-                            || response.contains("Invalid cvc")
+                            || response.contains("insufficient funds")
+                            || response.contains("invalid cvc")
                             || response.contains("this type of purchase")
                         {
                             "Approved ✅"
