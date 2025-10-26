@@ -99,7 +99,7 @@ impl STAPlugin {
         let timestamp = Utc::now().format("%Y-%m-%d %H:%M:%S").to_string();
         let user_id = message.from.as_ref().map(|u| u.id.0).unwrap_or(0) as i64;
         let chat_id = message.chat.id.0 as i64;
-        
+
         let mut input_text = msg.to_string();
         if msg.len() < 16 {
             if let Some(reply) = message.reply_to_message().as_ref() {

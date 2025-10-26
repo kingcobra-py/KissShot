@@ -99,7 +99,9 @@ impl ProxyFinderPlugin {
                     match response.text().await {
                         Ok(text) => text,
                         Err(e) => {
-                            let _ = LOGGER.error(&format!("Error reading response: {}", e)).await;
+                            let _ = LOGGER
+                                .error(&format!("Error reading response: {}", e))
+                                .await;
                             let reply = format!(
                                 "<b>Proxy Fetching Failed ❌</b>\n\
                                  <b>Reason:</b> Failed to read response from proxy API.\n\
@@ -114,7 +116,9 @@ impl ProxyFinderPlugin {
                         }
                     }
                 } else {
-                    let _ = LOGGER.error(&format!("API returned error status: {}", response.status())).await;
+                    let _ = LOGGER
+                        .error(&format!("API returned error status: {}", response.status()))
+                        .await;
                     let reply = format!(
                         "<b>Proxy Fetching Failed ❌</b>\n\
                          <b>Reason:</b> Proxy API returned an error.\n\
@@ -129,7 +133,9 @@ impl ProxyFinderPlugin {
                 }
             }
             Err(e) => {
-                let _ = LOGGER.error(&format!("Error fetching proxy data: {}", e)).await;
+                let _ = LOGGER
+                    .error(&format!("Error fetching proxy data: {}", e))
+                    .await;
                 let reply = format!(
                     "<b>Proxy Fetching Failed ❌</b>\n\
                      <b>Reason:</b> Failed to fetch proxy list from external service.\n\
@@ -220,7 +226,9 @@ impl ProxyFinderPlugin {
             .parse_mode(ParseMode::Html)
             .await
         {
-            let _ = LOGGER.error(&format!("Error sending document: {}", e)).await;
+            let _ = LOGGER
+                .error(&format!("Error sending document: {}", e))
+                .await;
         }
 
         let _ = fs::remove_file(&temp_file);

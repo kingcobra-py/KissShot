@@ -278,3 +278,115 @@ The bot encountered an error. Please try again.
 
 2025-10-24 16:09:21 | ERROR | AuthorizeChatPlugin | AuthorizeChatPlugin:unknown:0 | Failed to read file: Bad file descriptor (os error 9)
 
+2025-10-26 19:21:22 | ERROR | error_handler | error_handler:unknown:0 | ⚠️ **Task Error** ⚠️
+
+**Task:** message_handler
+**Error:** called `Result::unwrap()` on an `Err` value: Api(Unknown("Bad Request: text is too long"))
+**Timestamp:** 2025-10-26 19:21:22 UTC
+
+2025-10-26 19:21:22 | CRITICAL | error_handler | error_handler:unknown:0 | 🚨 **CRITICAL ERROR DETECTED** 🚨
+
+**Location:** src/plugins/gateways/chk.rs:251:14
+**Message:** called `Result::unwrap()` on an `Err` value: Api(Unknown("Bad Request: text is too long"))
+**Timestamp:** 2025-10-26 19:21:22 UTC
+
+The bot encountered an error. Please try again.
+
+2025-10-26 19:24:23 | ERROR | error_handler | error_handler:unknown:0 | ⚠️ **Task Error** ⚠️
+
+**Task:** message_handler
+**Error:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 118"))
+**Timestamp:** 2025-10-26 19:24:23 UTC
+
+2025-10-26 19:24:23 | CRITICAL | error_handler | error_handler:unknown:0 | 🚨 **CRITICAL ERROR DETECTED** 🚨
+
+**Location:** src/plugins/gateways/chk.rs:251:14
+**Message:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 118"))
+**Timestamp:** 2025-10-26 19:24:23 UTC
+
+The bot encountered an error. Please try again.
+
+2025-10-26 19:26:43 | ERROR | error_handler | error_handler:unknown:0 | ⚠️ **Task Error** ⚠️
+
+**Task:** message_handler
+**Error:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 118"))
+**Timestamp:** 2025-10-26 19:26:43 UTC
+
+2025-10-26 19:26:43 | CRITICAL | error_handler | error_handler:unknown:0 | 🚨 **CRITICAL ERROR DETECTED** 🚨
+
+**Location:** src/plugins/gateways/chk.rs:251:14
+**Message:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 118"))
+**Timestamp:** 2025-10-26 19:26:43 UTC
+
+The bot encountered an error. Please try again.
+
+2025-10-26 20:21:30 | ERROR | error_handler | error_handler:unknown:0 | ⚠️ **Task Error** ⚠️
+
+**Task:** message_handler
+**Error:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-26 20:21:30 UTC
+
+2025-10-26 20:21:30 | CRITICAL | error_handler | error_handler:unknown:0 | 🚨 **CRITICAL ERROR DETECTED** 🚨
+
+**Location:** src/plugins/gateways/chk.rs:251:14
+**Message:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-26 20:21:30 UTC
+
+The bot encountered an error. Please try again.
+
+2025-10-26 20:31:14 | ERROR | error_handler | error_handler:unknown:0 | ⚠️ **Task Error** ⚠️
+
+**Task:** message_handler
+**Error:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-26 20:31:14 UTC
+
+2025-10-26 20:31:14 | CRITICAL | error_handler | error_handler:unknown:0 | 🚨 **CRITICAL ERROR DETECTED** 🚨
+
+**Location:** src/plugins/gateways/chk.rs:252:14
+**Message:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-26 20:31:14 UTC
+
+The bot encountered an error. Please try again.
+
+2025-10-26 20:33:05 | ERROR | error_handler | error_handler:unknown:0 | ⚠️ **Task Error** ⚠️
+
+**Task:** message_handler
+**Error:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-26 20:33:05 UTC
+
+2025-10-26 20:33:05 | CRITICAL | error_handler | error_handler:unknown:0 | 🚨 **CRITICAL ERROR DETECTED** 🚨
+
+**Location:** src/plugins/gateways/chk.rs:252:14
+**Message:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-26 20:33:05 UTC
+
+The bot encountered an error. Please try again.
+
+2025-10-26 20:33:53 | ERROR | error_handler | error_handler:unknown:0 | ⚠️ **Task Error** ⚠️
+
+**Task:** message_handler
+**Error:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-26 20:33:53 UTC
+
+2025-10-26 20:33:53 | CRITICAL | error_handler | error_handler:unknown:0 | 🚨 **CRITICAL ERROR DETECTED** 🚨
+
+**Location:** src/plugins/gateways/chk.rs:252:14
+**Message:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-26 20:33:53 UTC
+
+The bot encountered an error. Please try again.
+
+2025-10-26 20:37:16 | ERROR | error_handler | error_handler:unknown:0 | ⚠️ **Task Error** ⚠️
+
+**Task:** message_handler
+**Error:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-26 20:37:16 UTC
+
+2025-10-26 20:37:16 | CRITICAL | error_handler | error_handler:unknown:0 | 🚨 **CRITICAL ERROR DETECTED** 🚨
+
+**Location:** src/plugins/gateways/chk.rs:252:14
+**Message:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-26 20:37:16 UTC
+
+The bot encountered an error. Please try again.
+

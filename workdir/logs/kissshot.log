@@ -21650,3 +21650,1315 @@ The bot encountered an error. Please try again.
 
 2025-10-25 18:26:17 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
 
+2025-10-26 19:16:22 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 19:16:22 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 19:16:22 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 19:16:22 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 19:16:22 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 19:16:22 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 19:16:22 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 19:16:22 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 19:16:22 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 19:16:36 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /start
+
+2025-10-26 19:16:36 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/start', body: ''
+
+2025-10-26 19:16:38 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 19:16:39 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 533.524682ms
+
+2025-10-26 19:16:39 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:16:44 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 5598880007890959|08|32|793
+
+2025-10-26 19:16:44 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5598880007890959|08|32|793'
+
+2025-10-26 19:17:08 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 19:17:08 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 19:17:10 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 19:17:10 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 19:17:10 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 19:17:10 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 19:17:10 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 19:17:10 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 19:17:11 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 19:17:11 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 19:17:11 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 19:17:21 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 5598880007890959|08|32|793
+
+2025-10-26 19:17:21 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5598880007890959|08|32|793'
+
+2025-10-26 19:18:27 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 19:18:27 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 19:21:07 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 19:21:07 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 19:21:07 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 19:21:07 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 19:21:07 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 19:21:07 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 19:21:07 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 19:21:07 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 19:21:07 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 19:21:09 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 5598880007890959|08|32|793
+
+2025-10-26 19:21:09 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5598880007890959|08|32|793'
+
+2025-10-26 19:21:11 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 19:21:11 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 529.604397ms
+
+2025-10-26 19:21:11 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:21:12 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:21:12 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:21:12 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:21:17 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:21:22 | ERROR | error_handler | error_handler:unknown:0 | ⚠️ **Task Error** ⚠️
+
+**Task:** message_handler
+**Error:** called `Result::unwrap()` on an `Err` value: Api(Unknown("Bad Request: text is too long"))
+**Timestamp:** 2025-10-26 19:21:22 UTC
+
+2025-10-26 19:21:22 | CRITICAL | error_handler | error_handler:unknown:0 | 🚨 **CRITICAL ERROR DETECTED** 🚨
+
+**Location:** src/plugins/gateways/chk.rs:251:14
+**Message:** called `Result::unwrap()` on an `Err` value: Api(Unknown("Bad Request: text is too long"))
+**Timestamp:** 2025-10-26 19:21:22 UTC
+
+The bot encountered an error. Please try again.
+
+2025-10-26 19:23:29 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 19:23:29 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 19:24:12 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 19:24:12 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 19:24:12 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 19:24:12 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 19:24:12 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 19:24:12 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 19:24:12 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 19:24:12 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 19:24:12 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 19:24:14 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 5598880007890959|08|32|793
+
+2025-10-26 19:24:14 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5598880007890959|08|32|793'
+
+2025-10-26 19:24:16 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 19:24:16 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 549.692835ms
+
+2025-10-26 19:24:16 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:24:16 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:24:17 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:24:17 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:24:22 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:24:23 | ERROR | error_handler | error_handler:unknown:0 | ⚠️ **Task Error** ⚠️
+
+**Task:** message_handler
+**Error:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 118"))
+**Timestamp:** 2025-10-26 19:24:23 UTC
+
+2025-10-26 19:24:23 | CRITICAL | error_handler | error_handler:unknown:0 | 🚨 **CRITICAL ERROR DETECTED** 🚨
+
+**Location:** src/plugins/gateways/chk.rs:251:14
+**Message:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 118"))
+**Timestamp:** 2025-10-26 19:24:23 UTC
+
+The bot encountered an error. Please try again.
+
+2025-10-26 19:25:14 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 19:25:14 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 19:26:33 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 19:26:33 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 19:26:33 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 19:26:33 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 19:26:33 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 19:26:33 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 19:26:33 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 19:26:33 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 19:26:33 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 19:26:35 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 5598880007890959|08|32|793
+
+2025-10-26 19:26:35 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5598880007890959|08|32|793'
+
+2025-10-26 19:26:37 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 19:26:37 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 525.285741ms
+
+2025-10-26 19:26:37 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:26:37 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:26:37 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:26:37 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:26:42 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:26:43 | ERROR | error_handler | error_handler:unknown:0 | ⚠️ **Task Error** ⚠️
+
+**Task:** message_handler
+**Error:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 118"))
+**Timestamp:** 2025-10-26 19:26:43 UTC
+
+2025-10-26 19:26:43 | CRITICAL | error_handler | error_handler:unknown:0 | 🚨 **CRITICAL ERROR DETECTED** 🚨
+
+**Location:** src/plugins/gateways/chk.rs:251:14
+**Message:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 118"))
+**Timestamp:** 2025-10-26 19:26:43 UTC
+
+The bot encountered an error. Please try again.
+
+2025-10-26 19:26:49 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 19:26:49 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 19:32:47 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 19:32:47 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 19:32:47 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 19:32:47 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 19:32:47 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 19:32:47 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 19:32:47 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 19:32:47 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 19:32:47 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 19:32:52 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 5598880007890959|08|32|793
+
+2025-10-26 19:32:52 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5598880007890959|08|32|793'
+
+2025-10-26 19:32:54 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 19:32:54 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 531.85263ms
+
+2025-10-26 19:32:54 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:32:54 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:32:54 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:32:54 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:33:00 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:33:15 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 19:33:15 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 19:35:29 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 19:35:29 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 19:35:29 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 19:35:29 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 19:35:29 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 19:35:29 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 19:35:29 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 19:35:29 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 19:35:29 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 19:36:13 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 5598880007890959|08|32|793
+
+2025-10-26 19:36:13 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5598880007890959|08|32|793'
+
+2025-10-26 19:36:14 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 19:36:15 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 557.813378ms
+
+2025-10-26 19:36:15 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:36:15 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:36:15 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:36:15 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:36:21 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:45:16 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 19:45:16 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 19:45:25 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 19:45:25 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 19:45:25 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 19:45:25 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 19:45:25 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 19:45:25 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 19:45:25 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 19:45:25 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 19:45:25 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 19:45:36 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 5598880007890959|08|32|793
+
+2025-10-26 19:45:36 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5598880007890959|08|32|793'
+
+2025-10-26 19:45:38 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 19:45:39 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 550.231952ms
+
+2025-10-26 19:45:39 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:45:39 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:45:39 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:45:39 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:45:45 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:47:55 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 19:47:55 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 19:48:01 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 19:48:01 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 19:48:01 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 19:48:01 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 19:48:01 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 19:48:01 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 19:48:01 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 19:48:01 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 19:48:01 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 19:49:01 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 5598880007890959|08|32|793
+
+2025-10-26 19:49:01 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5598880007890959|08|32|793'
+
+2025-10-26 19:49:03 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 19:49:03 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 559.548181ms
+
+2025-10-26 19:49:03 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:49:03 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:49:03 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:49:04 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:49:09 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:52:12 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 19:52:12 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 19:57:23 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 19:57:23 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 19:57:23 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 19:57:23 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 19:57:23 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 19:57:23 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 19:57:23 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 19:57:23 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 19:57:23 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 19:57:34 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 5598880007890959|08|32|793
+
+2025-10-26 19:57:34 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5598880007890959|08|32|793'
+
+2025-10-26 19:57:36 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 19:57:37 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 528.860937ms
+
+2025-10-26 19:57:37 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:57:37 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:57:37 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:57:37 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 19:57:40 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:00:58 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 20:00:58 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 20:01:08 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 20:01:08 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 20:01:08 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 20:01:08 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 20:01:08 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 20:01:08 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 20:01:08 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 20:01:08 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 20:01:08 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 20:01:10 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 5598880007890959|08|32|793
+
+2025-10-26 20:01:10 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5598880007890959|08|32|793'
+
+2025-10-26 20:01:12 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 20:01:12 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 521.585869ms
+
+2025-10-26 20:01:12 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:01:13 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:01:13 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:01:13 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:01:14 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:01:49 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 20:01:49 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 20:01:55 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 20:01:55 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 20:01:55 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 20:01:55 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 20:01:55 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 20:01:55 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 20:01:55 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 20:01:55 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 20:01:55 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 20:01:56 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 5598880007890959|08|32|793
+
+2025-10-26 20:01:56 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5598880007890959|08|32|793'
+
+2025-10-26 20:01:58 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 20:01:59 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 549.271219ms
+
+2025-10-26 20:01:59 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:01:59 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:01:59 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:01:59 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:02:00 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:02:21 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 20:02:21 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 20:02:27 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 20:02:27 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 20:02:27 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 20:02:27 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 20:02:27 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 20:02:27 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 20:02:27 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 20:02:27 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 20:02:27 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 20:02:28 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 5598880007890959|08|32|793
+
+2025-10-26 20:02:28 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5598880007890959|08|32|793'
+
+2025-10-26 20:02:31 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 20:02:31 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 511.35633ms
+
+2025-10-26 20:02:31 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:02:31 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:02:32 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:02:32 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:02:33 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:03:12 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 20:03:12 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 20:03:18 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 20:03:18 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 20:03:18 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 20:03:18 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 20:03:18 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 20:03:18 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 20:03:18 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 20:03:18 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 20:03:18 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 20:03:20 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 5598880007890959|08|32|793
+
+2025-10-26 20:03:20 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5598880007890959|08|32|793'
+
+2025-10-26 20:03:22 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 20:03:23 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 545.050539ms
+
+2025-10-26 20:03:23 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:03:23 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:03:23 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:03:23 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:03:24 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:04:15 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 20:04:15 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 20:04:16 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 20:04:16 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 20:04:16 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 20:04:16 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 20:04:16 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 20:04:16 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 20:04:16 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 20:04:16 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 20:04:16 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 20:04:19 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 5598880007890959|08|32|793
+
+2025-10-26 20:04:19 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5598880007890959|08|32|793'
+
+2025-10-26 20:04:21 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 20:04:22 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 548.054256ms
+
+2025-10-26 20:04:22 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:04:22 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:04:22 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:04:22 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:04:24 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:05:50 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 20:05:50 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 20:05:51 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 20:05:51 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 20:05:51 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 20:05:51 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 20:05:51 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 20:05:51 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 20:05:51 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 20:05:51 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 20:05:51 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 20:05:56 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 5598880007890959|08|32|793
+
+2025-10-26 20:05:56 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5598880007890959|08|32|793'
+
+2025-10-26 20:05:58 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 20:05:59 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 532.878764ms
+
+2025-10-26 20:05:59 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:05:59 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:05:59 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:05:59 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:06:05 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:07:33 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 4386680090050100|01|26|152
+
+2025-10-26 20:07:33 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '4386680090050100|01|26|152'
+
+2025-10-26 20:07:33 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:07:34 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:07:34 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:07:34 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:07:39 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:17:39 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 20:17:39 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 20:17:41 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 20:17:41 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 20:17:41 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 20:17:41 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 20:17:41 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 20:17:41 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 20:17:41 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 20:17:41 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 20:17:41 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 20:17:56 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 4386680090050100|01|26|152
+
+2025-10-26 20:17:56 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '4386680090050100|01|26|152'
+
+2025-10-26 20:17:58 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 20:17:59 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 528.641831ms
+
+2025-10-26 20:17:59 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:17:59 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:17:59 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:17:59 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:18:18 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:20:57 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 20:20:57 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 20:21:04 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 20:21:04 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 20:21:04 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 20:21:04 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 20:21:04 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 20:21:04 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 20:21:04 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 20:21:04 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 20:21:04 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 20:21:05 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 4386680090050100|01|26|152
+
+2025-10-26 20:21:05 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '4386680090050100|01|26|152'
+
+2025-10-26 20:21:07 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 20:21:07 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 531.629198ms
+
+2025-10-26 20:21:07 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:21:08 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:21:08 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:21:08 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:21:26 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:21:30 | ERROR | error_handler | error_handler:unknown:0 | ⚠️ **Task Error** ⚠️
+
+**Task:** message_handler
+**Error:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-26 20:21:30 UTC
+
+2025-10-26 20:21:30 | CRITICAL | error_handler | error_handler:unknown:0 | 🚨 **CRITICAL ERROR DETECTED** 🚨
+
+**Location:** src/plugins/gateways/chk.rs:251:14
+**Message:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-26 20:21:30 UTC
+
+The bot encountered an error. Please try again.
+
+2025-10-26 20:21:44 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 20:21:44 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 20:21:50 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 20:21:50 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 20:21:50 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 20:21:50 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 20:21:50 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 20:21:50 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 20:21:50 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 20:21:50 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 20:21:50 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 20:21:53 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 4386680090050100|01|26|152
+
+2025-10-26 20:21:53 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '4386680090050100|01|26|152'
+
+2025-10-26 20:21:55 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 20:21:55 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 519.450184ms
+
+2025-10-26 20:21:55 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:21:56 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:21:56 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:21:56 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:22:13 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:23:11 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 20:23:11 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 20:23:42 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 20:23:42 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 20:23:42 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 20:23:42 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 20:23:42 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 20:23:42 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 20:23:42 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 20:23:42 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 20:23:42 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 20:23:50 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 4386680090050100|01|26|152
+
+2025-10-26 20:23:50 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '4386680090050100|01|26|152'
+
+2025-10-26 20:23:52 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 20:23:52 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 542.594451ms
+
+2025-10-26 20:23:52 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:23:52 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:23:52 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:23:52 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:23:59 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:29:58 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 20:29:58 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 20:30:57 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 20:30:57 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 20:30:57 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 20:30:57 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 20:30:57 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 20:30:57 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 20:30:57 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 20:30:57 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 20:30:57 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 20:30:59 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 4386680090050100|01|26|152
+
+2025-10-26 20:30:59 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '4386680090050100|01|26|152'
+
+2025-10-26 20:31:01 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 20:31:01 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 543.426611ms
+
+2025-10-26 20:31:01 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:31:01 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:31:01 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:31:02 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:31:10 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:31:14 | ERROR | error_handler | error_handler:unknown:0 | ⚠️ **Task Error** ⚠️
+
+**Task:** message_handler
+**Error:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-26 20:31:14 UTC
+
+2025-10-26 20:31:14 | CRITICAL | error_handler | error_handler:unknown:0 | 🚨 **CRITICAL ERROR DETECTED** 🚨
+
+**Location:** src/plugins/gateways/chk.rs:252:14
+**Message:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-26 20:31:14 UTC
+
+The bot encountered an error. Please try again.
+
+2025-10-26 20:32:21 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 20:32:21 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 20:32:42 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 20:32:42 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 20:32:42 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 20:32:42 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 20:32:42 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 20:32:42 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 20:32:42 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 20:32:42 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 20:32:42 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 20:32:44 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 4386680090050100|01|26|152
+
+2025-10-26 20:32:44 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '4386680090050100|01|26|152'
+
+2025-10-26 20:32:45 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 20:32:46 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 530.859807ms
+
+2025-10-26 20:32:46 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:32:46 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:32:46 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:32:46 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:33:04 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:33:05 | ERROR | error_handler | error_handler:unknown:0 | ⚠️ **Task Error** ⚠️
+
+**Task:** message_handler
+**Error:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-26 20:33:05 UTC
+
+2025-10-26 20:33:05 | CRITICAL | error_handler | error_handler:unknown:0 | 🚨 **CRITICAL ERROR DETECTED** 🚨
+
+**Location:** src/plugins/gateways/chk.rs:252:14
+**Message:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-26 20:33:05 UTC
+
+The bot encountered an error. Please try again.
+
+2025-10-26 20:33:23 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 20:33:23 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 20:33:29 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 20:33:29 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 20:33:29 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 20:33:29 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 20:33:29 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 20:33:29 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 20:33:29 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 20:33:29 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 20:33:29 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 20:33:31 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 4386680090050100|01|26|152
+
+2025-10-26 20:33:31 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '4386680090050100|01|26|152'
+
+2025-10-26 20:33:32 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 20:33:33 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 548.891751ms
+
+2025-10-26 20:33:33 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:33:33 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:33:33 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:33:33 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:33:52 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:33:53 | ERROR | error_handler | error_handler:unknown:0 | ⚠️ **Task Error** ⚠️
+
+**Task:** message_handler
+**Error:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-26 20:33:53 UTC
+
+2025-10-26 20:33:53 | CRITICAL | error_handler | error_handler:unknown:0 | 🚨 **CRITICAL ERROR DETECTED** 🚨
+
+**Location:** src/plugins/gateways/chk.rs:252:14
+**Message:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-26 20:33:53 UTC
+
+The bot encountered an error. Please try again.
+
+2025-10-26 20:36:58 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 20:36:58 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 20:37:00 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 20:37:00 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 20:37:00 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 20:37:00 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 20:37:00 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 20:37:00 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 20:37:00 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 20:37:00 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 20:37:00 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 20:37:06 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 4386680090050100|01|26|152
+
+2025-10-26 20:37:06 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '4386680090050100|01|26|152'
+
+2025-10-26 20:37:07 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 20:37:08 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 539.28309ms
+
+2025-10-26 20:37:08 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:37:08 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:37:08 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:37:08 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:37:15 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:37:16 | ERROR | error_handler | error_handler:unknown:0 | ⚠️ **Task Error** ⚠️
+
+**Task:** message_handler
+**Error:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-26 20:37:16 UTC
+
+2025-10-26 20:37:16 | CRITICAL | error_handler | error_handler:unknown:0 | 🚨 **CRITICAL ERROR DETECTED** 🚨
+
+**Location:** src/plugins/gateways/chk.rs:252:14
+**Message:** called `Result::unwrap()` on an `Err` value: Api(CantParseEntities("Bad Request: can't parse entities: Unsupported start tag \"!doctype\" at byte offset 122"))
+**Timestamp:** 2025-10-26 20:37:16 UTC
+
+The bot encountered an error. Please try again.
+
+2025-10-26 20:37:59 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 20:37:59 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 20:41:53 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 20:41:53 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 20:41:53 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 20:41:53 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 20:41:53 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 20:41:53 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 20:41:53 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 20:41:53 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 20:41:53 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 20:41:54 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 4386680090050100|01|26|152
+
+2025-10-26 20:41:54 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '4386680090050100|01|26|152'
+
+2025-10-26 20:41:56 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 20:41:57 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 517.996157ms
+
+2025-10-26 20:41:57 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:41:57 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:41:57 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:41:57 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:41:59 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 4386680090050100|01|26|152
+
+2025-10-26 20:41:59 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '4386680090050100|01|26|152'
+
+2025-10-26 20:41:59 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:41:59 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:41:59 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:42:06 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 4386680090050100|01|26|152
+
+2025-10-26 20:42:06 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '4386680090050100|01|26|152'
+
+2025-10-26 20:42:07 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:42:07 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:42:07 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:42:07 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:42:14 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:42:15 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:44:19 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 20:44:19 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 20:44:23 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 20:44:23 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 20:44:23 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 20:44:23 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 20:44:23 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 20:44:23 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 20:44:23 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 20:44:23 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 20:44:23 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 20:44:37 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 7240857017: /chk 4386680090050100|01|26|152
+
+2025-10-26 20:44:37 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '4386680090050100|01|26|152'
+
+2025-10-26 20:44:39 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 20:44:39 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 551.931767ms
+
+2025-10-26 20:44:39 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:44:40 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:44:40 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:44:40 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:44:48 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=7240857017
+
+2025-10-26 20:45:33 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 20:45:33 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 20:46:10 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 20:46:10 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 20:46:10 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 20:46:10 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 20:46:10 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 20:46:10 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 20:46:10 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 20:46:10 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 20:46:10 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 20:46:19 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 766109755: /chk 5196032162590653|12|2027|562
+
+2025-10-26 20:46:19 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5196032162590653|12|2027|562'
+
+2025-10-26 20:46:20 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 20:46:21 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 537.69908ms
+
+2025-10-26 20:46:21 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:46:21 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:46:21 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:46:21 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:46:41 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:50:27 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 766109755: /chk 4386680090050100|01|26|152
+
+2025-10-26 20:50:27 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '4386680090050100|01|26|152'
+
+2025-10-26 20:50:29 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:50:29 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 509.066643ms
+
+2025-10-26 20:50:29 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:50:29 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:50:29 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:50:49 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:53:02 | INFO | main | main:unknown:0 | 🛑 Received shutdown signal, stopping bot...
+
+2025-10-26 20:53:02 | INFO | main | main:unknown:0 | 👋 Bot shutdown complete
+
+2025-10-26 20:53:11 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 20:53:11 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 20:53:11 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 20:53:11 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 20:53:11 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 20:53:11 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 20:53:11 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 20:53:11 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 20:53:11 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+
+2025-10-26 20:54:09 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 766109755: /chk 5389200070768474|07|2028|364
+
+2025-10-26 20:54:09 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5389200070768474|07|2028|364'
+
+2025-10-26 20:54:11 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL connection pool initialized successfully
+
+2025-10-26 20:54:11 | WARNING | Database_SQL | Database_SQL:unknown:0 | Slow SQL query: 505.244543ms
+
+2025-10-26 20:54:11 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:54:11 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:54:11 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:54:11 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:54:12 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 766109755: /chk 5588290000013470|11|2028|624
+
+2025-10-26 20:54:12 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5588290000013470|11|2028|624'
+
+2025-10-26 20:54:13 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:54:13 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:54:13 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:54:16 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 766109755: /chk 5196032162590653|12|2027|562
+
+2025-10-26 20:54:16 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5196032162590653|12|2027|562'
+
+2025-10-26 20:54:16 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:54:17 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:54:17 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:54:20 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:54:26 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 766109755: /chk 5588290000013470|11|2028|624
+
+2025-10-26 20:54:26 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5588290000013470|11|2028|624'
+
+2025-10-26 20:54:27 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:54:27 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:54:27 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:54:27 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:54:35 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:54:46 | INFO | telegram | telegram:unknown:0 | 📨 Received message from user 766109755: /chk 5196032162590653|12|2027|562
+
+2025-10-26 20:54:46 | DEBUG | telegram | telegram:unknown:0 | 🔍 Parsed command: '/chk', body: '5196032162590653|12|2027|562'
+
+2025-10-26 20:54:46 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:54:46 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:54:46 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:54:47 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+
+2025-10-26 20:54:54 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
+

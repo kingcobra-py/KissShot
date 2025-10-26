@@ -101,33 +101,24 @@ impl RedeemPlugin {
             return;
         }
 
-            let mut parts = msg.split_whitespace();
-            let code = match parts.next() {
-                Some(first) => {
-                    if first.starts_with('/') {
-                        match parts.next() {
-                            Some(c) if !c.trim().is_empty() => c.trim().to_string(),
-                            _ => {
-                                let reply = "<b>Code Redemption Failed ❌</b>\n\n<b>Reason:</b> Please provide a valid redeem code.";
-                                bot.edit_message_text(message.chat.id, sent_msg.id, reply)
-                                    .parse_mode(ParseMode::Html)
-                                    .await
-                                    .unwrap();
-                                return;
-                            }
+        let mut parts = msg.split_whitespace();
+        let code = match parts.next() {
+            Some(first) => {
+                if first.starts_with('/') {
+                    match parts.next() {
+                        Some(c) if !c.trim().is_empty() => c.trim().to_string(),
+                        _ => {
+                            let reply = "<b>Code Redemption Failed ❌</b>\n\n<b>Reason:</b> Please provide a valid redeem code.";
+                            bot.edit_message_text(message.chat.id, sent_msg.id, reply)
+                                .parse_mode(ParseMode::Html)
+                                .await
+                                .unwrap();
+                            return;
                         }
-                    } else if !first.trim().is_empty() {
-                        first.trim().to_string()
-                    } else {
-                        let reply = "<b>Code Redemption Failed ❌</b>\n\n<b>Reason:</b> Please provide a valid redeem code.";
-                        bot.edit_message_text(message.chat.id, sent_msg.id, reply)
-                            .parse_mode(ParseMode::Html)
-                            .await
-                            .unwrap();
-                        return;
                     }
-                }
-                None => {
+                } else if !first.trim().is_empty() {
+                    first.trim().to_string()
+                } else {
                     let reply = "<b>Code Redemption Failed ❌</b>\n\n<b>Reason:</b> Please provide a valid redeem code.";
                     bot.edit_message_text(message.chat.id, sent_msg.id, reply)
                         .parse_mode(ParseMode::Html)
@@ -135,7 +126,16 @@ impl RedeemPlugin {
                         .unwrap();
                     return;
                 }
-            };
+            }
+            None => {
+                let reply = "<b>Code Redemption Failed ❌</b>\n\n<b>Reason:</b> Please provide a valid redeem code.";
+                bot.edit_message_text(message.chat.id, sent_msg.id, reply)
+                    .parse_mode(ParseMode::Html)
+                    .await
+                    .unwrap();
+                return;
+            }
+        };
 
         let user_data = match fetch_user(user_id).await {
             Ok(Some(user)) => user,
@@ -181,7 +181,7 @@ impl RedeemPlugin {
             return;
         }
 
-    let gift_data = match get_gift_code(&code).await {
+        let gift_data = match get_gift_code(&code).await {
             Ok(Some(data)) => data,
             Ok(None) => {
                 let reply =
@@ -216,7 +216,7 @@ impl RedeemPlugin {
         }
         let gift_balance = gift_data.gift_balance;
 
-    if let Err(e) = update_gift_code(&code, None, Some(true)).await {
+        if let Err(e) = update_gift_code(&code, None, Some(true)).await {
             LOGGER
                 .error(&format!("❌ Failed to mark code as used: {}", e))
                 .await;

@@ -128,7 +128,9 @@ impl IPLookupPlugin {
             match reqwest::get(&format!("https://scamalytics.com/ip/{}", ip_address)).await {
                 Ok(resp) => resp,
                 Err(e) => {
-                    let _ = LOGGER.error(&format!("Error fetching IP data: {}", e)).await;
+                    let _ = LOGGER
+                        .error(&format!("Error fetching IP data: {}", e))
+                        .await;
                     let reply = format!(
                         "<b>IP Lookup Failed ❌</b>\n\
                      <b>Reason:</b> Failed to fetch IP data from external service.\n\
@@ -145,7 +147,9 @@ impl IPLookupPlugin {
         let html_content = match response.text().await {
             Ok(content) => content,
             Err(e) => {
-                let _ = LOGGER.error(&format!("Error reading response: {}", e)).await;
+                let _ = LOGGER
+                    .error(&format!("Error reading response: {}", e))
+                    .await;
                 let reply = format!(
                     "<b>IP Lookup Failed ❌</b>\n\
                      <b>Reason:</b> Failed to read response from external service.\n\

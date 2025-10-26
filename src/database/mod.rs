@@ -3,5 +3,5 @@
 pub mod kvs;
 pub mod sql;
 
-pub use sql::{User, UserUpdate, UserStats, SQLDatabase, SQLError, get_sql, fetch_user};
-pub use kvs::{KVS, Result as KVSResult};
+pub use kvs::{Result as KVSResult, KVS};
+pub use sql::{fetch_user, get_sql, SQLDatabase, SQLError, User, UserStats, UserUpdate};

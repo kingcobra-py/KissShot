@@ -70,7 +70,9 @@ impl CCFilterPlugin {
         let mut text = String::new();
 
         if let Some(document) = message.document() {
-            let _ = LOGGER.info("Document attachment detected but not processed yet").await;
+            let _ = LOGGER
+                .info("Document attachment detected but not processed yet")
+                .await;
         }
 
         if msg.len() > 20 {
@@ -106,7 +108,9 @@ impl CCFilterPlugin {
         let cc_pattern = match Regex::new(cc_regex_pattern) {
             Ok(regex) => regex,
             Err(e) => {
-                let _ = LOGGER.error(&format!("Invalid CC regex pattern: {}", e)).await;
+                let _ = LOGGER
+                    .error(&format!("Invalid CC regex pattern: {}", e))
+                    .await;
                 let reply = format!(
                     "<b>Credit Card Filterization Failed ❌</b>\n\n\
                      <b>Reason:</b> Invalid regex pattern in config.\n\
@@ -189,7 +193,9 @@ impl CCFilterPlugin {
                 .parse_mode(ParseMode::Html)
                 .await
             {
-                let _ = LOGGER.error(&format!("Error sending document: {}", e)).await;
+                let _ = LOGGER
+                    .error(&format!("Error sending document: {}", e))
+                    .await;
             }
 
             let _ = fs::remove_file(file_name);

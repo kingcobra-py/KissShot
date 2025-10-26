@@ -440,7 +440,7 @@ impl ScraperPlugin {
                             tl::enums::Peer::User(_) => {
                                 format!("User: {}", chat_id)
                             }
-                        }
+                        },
                     },
                     Err(e) => {
                         LOGGER

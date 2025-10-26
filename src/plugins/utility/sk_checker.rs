@@ -62,7 +62,9 @@ impl SKCheckerPlugin {
         {
             Ok(resp) => resp,
             Err(e) => {
-                let _ = LOGGER.error(&format!("Error in payment method request: {}", e)).await;
+                let _ = LOGGER
+                    .error(&format!("Error in payment method request: {}", e))
+                    .await;
                 return format!(
                     "<b>Secret Key:</b> {}\n\
                      <b>Status:</b> ERROR ❌",
@@ -80,7 +82,9 @@ impl SKCheckerPlugin {
         {
             Ok(resp) => resp,
             Err(e) => {
-                let _ = LOGGER.error(&format!("Error in balance request: {}", e)).await;
+                let _ = LOGGER
+                    .error(&format!("Error in balance request: {}", e))
+                    .await;
                 return format!(
                     "<b>Secret Key:</b> {}\n\
                      <b>Status:</b> ERROR ❌",
@@ -229,7 +233,9 @@ impl SKCheckerPlugin {
 
         if let Some(document) = message.document() {
             let _ = document;
-            let _ = LOGGER.info("Document attachment detected but not processed yet").await;
+            let _ = LOGGER
+                .info("Document attachment detected but not processed yet")
+                .await;
         }
 
         if msg.len() > 20 {
