@@ -23026,3 +23026,21 @@ The bot encountered an error. Please try again.
 
 2025-10-26 21:31:00 | INFO | Database_SQL | Database_SQL:unknown:0 | SQL fetched successfully: user_id=766109755
 
+2025-10-26 21:41:15 | INFO | main | main:unknown:0 | ✅ Configuration loaded successfully
+
+2025-10-26 21:41:15 | INFO | main | main:unknown:0 | 🔧 Configuring logging system...
+
+2025-10-26 21:41:15 | INFO | main | main:unknown:0 | 🚀 Starting KissShot Bot...
+
+2025-10-26 21:41:15 | INFO | main | main:unknown:0 | 📊 Bot Token: 83938092...
+
+2025-10-26 21:41:15 | INFO | main | main:unknown:0 | 🔧 Workers: 10
+
+2025-10-26 21:41:15 | INFO | main | main:unknown:0 | ⏱️ Timeout: 30s
+
+2025-10-26 21:41:15 | INFO | main | main:unknown:0 | 🛡️ Global error handler initialized
+
+2025-10-26 21:41:15 | INFO | main | main:unknown:0 | 🔧 Building dispatcher...
+
+2025-10-26 21:41:15 | INFO | main | main:unknown:0 | ✅ Bot is now running! Press Ctrl+C to stop.
+

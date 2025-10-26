@@ -13,6 +13,7 @@ use teloxide::sugar::request::RequestLinkPreviewExt;
 use teloxide::types::{Message, ParseMode};
 use teloxide::{prelude::Requester, Bot};
 use teloxide_plugin::TeloxidePlugin;
+use crate::plugins::helpers::utils::luhn::luhn_check;
 
 lazy_static::lazy_static! {
     static ref LOGGER: std::sync::Arc<LoggerHandle> = {
@@ -359,6 +360,30 @@ async fn lookup_pp(cc: &str) -> Result<(String, String), String> {
 
     let response_data: PPResponse = resp.json().await.map_err(|e| e.to_string())?;
 
-    // Return responseType and message
-    Ok((response_data.responseType, response_data.message))
+    // Sanitize message to remove sensitive information (time, usernames, IP addresses)
+    let mut sanitized_message = response_data.message.clone();
+    
+    // Remove time references like "Time :(20s) -" or "Time (20s) -"
+    if let Some(time_pos) = sanitized_message.find("Time") {
+        if let Some(dash_pos) = sanitized_message[time_pos..].find(" - ") {
+            sanitized_message = sanitized_message[time_pos + dash_pos + 3..].to_string();
+        }
+    }
+    
+    // Remove IP addresses (basic pattern: xxx.xxx.xxx.xxx)
+    let ip_regex = regex::Regex::new(r"\b(?:\d{1,3}\.){3}\d{1,3}\b").unwrap_or_else(|_| regex::Regex::new("$.^").unwrap());
+    sanitized_message = ip_regex.replace_all(&sanitized_message, "").to_string();
+    
+    // Remove @ mentions/usernames completely (not just redact)
+    let mention_regex = regex::Regex::new(r"\s*@[\w]+\s*").unwrap_or_else(|_| regex::Regex::new("$.^").unwrap());
+    sanitized_message = mention_regex.replace_all(&sanitized_message, " ").to_string();
+    
+    // Clean up extra spaces and dashes
+    sanitized_message = sanitized_message.trim().to_string();
+    sanitized_message = regex::Regex::new(r"\s*-\s*-\s*").unwrap_or_else(|_| regex::Regex::new("$.^").unwrap()).replace_all(&sanitized_message, " ").to_string();
+    sanitized_message = regex::Regex::new(r"\s+").unwrap_or_else(|_| regex::Regex::new("$.^").unwrap()).replace_all(&sanitized_message, " ").to_string();
+    sanitized_message = sanitized_message.trim().to_string();
+
+    // Return responseType and sanitized message
+    Ok((response_data.responseType, sanitized_message))
 }
