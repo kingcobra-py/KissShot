@@ -13,7 +13,6 @@ use teloxide::sugar::request::RequestLinkPreviewExt;
 use teloxide::types::{Message, ParseMode};
 use teloxide::{prelude::Requester, Bot};
 use teloxide_plugin::TeloxidePlugin;
-use crate::plugins::helpers::utils::luhn::luhn_check;
 
 lazy_static::lazy_static! {
     static ref LOGGER: std::sync::Arc<LoggerHandle> = {
