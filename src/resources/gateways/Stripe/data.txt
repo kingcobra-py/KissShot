@@ -3,6 +3,12 @@
 <b>Arguments</b>: 
     • <code>Credit Card In Pipe Format</code> (required)
 
+<b>Stripe Premium</b>
+    <b>Description</b>: No Description Added!
+    <b>Trigger</b>: <code>/chk</code>
+    <b>Status</b>: Online ✅
+    <b>Updated</b>: 22/10/2025
+
 <b>Stripe Auth</b>
     <b>Description</b>: No Description Added!
     <b>Trigger</b>: <code>/sta</code>
