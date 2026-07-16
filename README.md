@@ -46,42 +46,42 @@ Plugins are registered at compile time using the `inventory` crate. Each plugin 
 
 #### User
 
-| Command | Description |
-|---------|-------------|
-| `/start` `/help` `/cmds` | Bot info and command list |
-| `/register` | Register an account |
-| `/chk <card>` | Check card via Stripe |
-| `/an <card>` | Check card via Authorize.net |
-| `/pp <card>` | Check card via PayPal |
-| `/sta <card>` | Check card via Stripe (alt) |
-| `/vbv <card>` | VBV verification check |
-| `/gen <bin>` | Generate cards from BIN |
-| `/sk <key>` | Check a Stripe secret key |
-| `/skgen` | Generate Stripe keys |
-| `/skscr` | Scrape Stripe keys from Telegram |
-| `/scr` | Scrape card numbers from Telegram |
-| `/bin <number>` | BIN lookup |
-| `/ip <address>` | IP geolocation |
-| `/filter <text>` | Filter/validate card data |
-| `/id` | Telegram user ID info |
-| `/proxy` | Fetch working proxies |
-| `/redeem <code>` | Redeem a gift code |
+| Command              | Description                          |
+|----------------------|--------------------------------------|
+| `/start` `/help` `/cmds` | Bot info and command list      |
+| `/register`          | Register an account                  |
+| `/chk <card>`        | Check card via Stripe                |
+| `/an <card>`         | Check card via Authorize.net         |
+| `/pp <card>`         | Check card via PayPal                |
+| `/sta <card>`        | Check card via Stripe (alt)          |
+| `/vbv <card>`        | VBV verification check               |
+| `/gen <bin>`         | Generate cards from BIN              |
+| `/sk <key>`          | Check a Stripe secret key            |
+| `/skgen`             | Generate Stripe keys                 |
+| `/skscr`             | Scrape Stripe keys from Telegram     |
+| `/scr`               | Scrape card numbers from Telegram    |
+| `/bin <number>`      | BIN lookup                           |
+| `/ip <address>`      | IP geolocation                       |
+| `/filter <text>`     | Filter/validate card data            |
+| `/id`                | Telegram user ID info                |
+| `/proxy`             | Fetch working proxies                |
+| `/redeem <code>`     | Redeem a gift code                   |
 
 </td>
 <td width="50%">
 
 #### Admin
 
-| Command | Description |
-|---------|-------------|
-| `/authorize <user>` | Grant access |
-| `/deauthorize <user>` | Revoke access |
-| `/ban <user>` | Ban a user |
-| `/unban <user>` | Unban a user |
-| `/broadcast <text>` | Send message to all users |
-| `/upgrade <user>` | Upgrade user tier |
-| `/degrade <user>` | Downgrade user tier |
-| `/codegen` | Generate gift codes |
+| Command              | Description                       |
+|----------------------|-----------------------------------|
+| `/authorize <user>`  | Grant access                      |
+| `/deauthorize <user>`| Revoke access                     |
+| `/ban <user>`        | Ban a user                        |
+| `/unban <user>`      | Unban a user                      |
+| `/broadcast <text>`  | Send message to all users         |
+| `/upgrade <user>`    | Upgrade user tier                 |
+| `/degrade <user>`    | Downgrade user tier               |
+| `/codegen`           | Generate gift codes               |
 
 </td>
 </tr>
