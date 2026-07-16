@@ -1,8 +1,6 @@
-# KissShot RS
+# KissShot
 
 A Telegram bot for validating credit cards. Built in Rust with [teloxide](https://github.com/teloxide/teloxide).
-
-Currently in super alpha.
 
 ## Features
 
