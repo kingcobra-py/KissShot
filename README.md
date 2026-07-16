@@ -40,6 +40,12 @@ Plugins are registered at compile time using the `inventory` crate. Each plugin 
 
 ## Commands
 
+<table>
+<tr>
+<td width="50%">
+
+#### User
+
 | Command | Description |
 |---------|-------------|
 | `/start` `/help` `/cmds` | Bot info and command list |
@@ -60,14 +66,26 @@ Plugins are registered at compile time using the `inventory` crate. Each plugin 
 | `/id` | Telegram user ID info |
 | `/proxy` | Fetch working proxies |
 | `/redeem <code>` | Redeem a gift code |
-| `/authorize <user>` | Grant access _(admin)_ |
-| `/deauthorize <user>` | Revoke access _(admin)_ |
-| `/ban <user>` | Ban a user _(admin)_ |
-| `/unban <user>` | Unban a user _(admin)_ |
-| `/broadcast <text>` | Send message to all users _(admin)_ |
-| `/upgrade <user>` | Upgrade user tier _(admin)_ |
-| `/degrade <user>` | Downgrade user tier _(admin)_ |
-| `/codegen` | Generate gift codes _(admin)_ |
+
+</td>
+<td width="50%">
+
+#### Admin
+
+| Command | Description |
+|---------|-------------|
+| `/authorize <user>` | Grant access |
+| `/deauthorize <user>` | Revoke access |
+| `/ban <user>` | Ban a user |
+| `/unban <user>` | Unban a user |
+| `/broadcast <text>` | Send message to all users |
+| `/upgrade <user>` | Upgrade user tier |
+| `/degrade <user>` | Downgrade user tier |
+| `/codegen` | Generate gift codes |
+
+</td>
+</tr>
+</table>
 
 ## Requirements
 

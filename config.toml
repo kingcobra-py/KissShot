@@ -1,30 +1,30 @@
 [Telegram]
     [Telegram.BOT]
-        API_ID       = "8875670"
-        API_HASH     = "f7a7079ea12f90a262c83f2d5c275bb2"
-        BOT_TOKEN    = "8393809259:AAGDft3cxGYOIjwlMryLoqPncYCol9W_NGs"
+        API_ID       = ""
+        API_HASH     = ""
+        BOT_TOKEN    = ""
 
     [Telegram.USER]
-        API_ID       = "8875670"
-        API_HASH     = "f7a7079ea12f90a262c83f2d5c275bb2"
-        PHONE_NUMBER = "+8801872871756"
+        API_ID       = ""
+        API_HASH     = ""
+        PHONE_NUMBER = ""
 
 
 [Database]
     [Database.SQL]
-        URI          = "mysql://avnadmin:AVNS_QxreB4yPSVnbQuWvXfp@mysql-3f6236ad-jhackur445-963c.g.aivencloud.com:12888/defaultdb?ssl-mode=REQUIRED"
-        HOST         = "mysql-3f6236ad-jhackur445-963c.g.aivencloud.com"
-        PORT         = 12888
-        USER         = "avnadmin"
-        PASSWORD     = "AVNS_QxreB4yPSVnbQuWvXfp"
-        DATABASE     = "defaultdb"
+        URI          = ""
+        HOST         = ""
+        PORT         = 
+        USER         = ""
+        PASSWORD     = ""
+        DATABASE     = ""
 
     [Database.REDIS]
-        URI          = "rediss://default:AVNS_rnfjAvsolU2pZ7ZdQm_@valkey-3235656f-jhackur445-963c.i.aivencloud.com:12889"
-        HOST         = "valkey-3235656f-jhackur445-963c.i.aivencloud.com"
-        PORT         = 12889
-        USER         = "default"
-        PASSWORD     = "AVNS_rnfjAvsolU2pZ7ZdQm_"
+        URI          = ""
+        HOST         = ""
+        PORT         = 
+        USER         = ""
+        PASSWORD     = ""
 
 
 [Teloxide]
@@ -61,7 +61,7 @@
         PREFIX       = "HeckerVault_"
 
     [Config.PROXY]
-        PROXY        = "http://celltopg-rotate:2k6cqcxcfhc3@p.webshare.io:80/"
+        PROXY        = ""
 
     [Config.DEFAULT_USER_VALUE]
         ANTISPAM = 30
