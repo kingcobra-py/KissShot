@@ -97,112 +97,49 @@ Plugins are registered at compile time using the `inventory` crate. Each plugin 
 
 ## Config
 
-All configuration lives in `config.toml`.
-
-### Telegram
+Configuration lives in `config.toml`.
 
 ```toml
 [Telegram.BOT]
-API_ID       = "..."
-API_HASH     = "..."
-BOT_TOKEN    = "..."
+API_ID, API_HASH    # From my.telegram.org
+BOT_TOKEN           # From @BotFather
 
 [Telegram.USER]
-API_ID       = "..."
-API_HASH     = "..."
-PHONE_NUMBER = "+..."
-```
+API_ID, API_HASH, PHONE_NUMBER  # Used by scraper plugins (/scr, /skscr)
 
-- **`BOT`** — Bot API credentials from [my.telegram.org](https://my.telegram.org). The bot token comes from BotFather.
-- **`USER`** — User account credentials, used by the scraper plugins (`/scr`, `/skscr`) which log into a user Telegram account to scrape channels.
-
-### Database
-
-```toml
 [Database.SQL]
-URI = "mysql://user:pass@host:port/db?ssl-mode=REQUIRED"
+URI    # MySQL connection string
 
 [Database.REDIS]
-URI = "rediss://default:pass@host:port"
-```
+URI    # Redis/Valkey connection string
 
-- **`SQL`** — MySQL connection. Stores users, bans, sessions, and gift codes.
-- **`REDIS`** — Redis or Valkey instance. Used for caching, rate limiting, and temporary key-value storage.
-
-### Teloxide
-
-```toml
 [Teloxide]
-WORKERS        = 10
-TIMEOUT        = 30
-REQUEST_CONCURRENCY = 100
-MAX_NETWORK_RETRIES = 3
-LOGGING        = true
-```
+WORKERS              # Async worker threads (default: 10)
+TIMEOUT              # Telegram API request timeout in seconds
+REQUEST_CONCURRENCY  # Max concurrent outgoing requests
+LOGGING              # Verbose logging toggle
 
-- **`WORKERS`** — Number of async worker threads for handling updates.
-- **`TIMEOUT`** — Seconds before a Telegram API request times out.
-- **`REQUEST_CONCURRENCY`** — Max concurrent outgoing HTTP requests.
-- **`MAX_NETWORK_RETRIES`** — How many times to retry a failed Telegram API call.
-- **`LOGGING`** — Toggle verbose logging output.
-
-### Bot Settings
-
-```toml
 [Config.BASIC]
-ADMIN   = [766109755]
-CHANNEL = "heckervault"
-GROUP   = "heckervaultchat"
-```
+ADMIN    = [user_id]     # Admin Telegram user IDs
+CHANNEL  = "username"    # Required channel for access checks
+GROUP    = "username"    # Required group for access checks
 
-- **`ADMIN`** — Telegram user IDs that have admin access. Can hold multiple IDs.
-- **`CHANNEL`** — Telegram channel username the bot checks for user membership (no `@` or `t.me/`).
-- **`GROUP`** — Telegram group username the bot checks for user membership.
-
-### Limits
-
-```toml
 [Config.LIMITS]
-MAX_CC_SCR = 3001
-MAX_SK_SCR = 3001
-MAX_CC_CHK = 5
-MAX_SK_CHK = 20
-```
+MAX_CC_SCR / MAX_SK_SCR   # Max items per scrape request
+MAX_CC_CHK / MAX_SK_CHK   # Max items per check (non-admin)
 
-- **`MAX_CC_SCR`** — Max cards to scrape in a single `/scr` request.
-- **`MAX_SK_SCR`** — Max Stripe keys to scrape in a single `/skscr` request.
-- **`MAX_CC_CHK`** — Max cards a non-admin user can check at once with `/chk`.
-- **`MAX_SK_CHK`** — Max Stripe keys a non-admin user can check at once with `/sk`.
-
-### Regex Patterns
-
-```toml
 [Config.REGEX]
-CC_REGEX = '[0-9]{16}[|][0-9]{1,2}[|][0-9]{2,4}[|][0-9]{3}'
-SK_REGEX = 'sk_live_\\S+'
-BIN_REGEX = '^[0-9]{16}$'
-```
-
-Used to validate input. Cards are expected in `NUMBER|MM|YY|CVV` format. Stripe keys must start with `sk_live_`.
-
-### Other
-
-```toml
-[Config.GIFT_CODE]
-PREFIX = "HeckerVault_"
+CC_REGEX   # Card format: NUMBER|MM|YY|CVV
+SK_REGEX   # Must start with sk_live_
 
 [Config.PROXY]
-PROXY = "http://user:pass@proxy:port/"
+PROXY    # Rotating proxy URL for gateway requests
 
 [Config.DEFAULT_USER_VALUE]
-ANTISPAM = 30
-BALANCE  = 0
-STATUS   = "FREE"
+ANTISPAM = 30   # Cooldown in seconds between commands
+BALANCE  = 0    # Starting balance for new users
+STATUS   = "FREE"  # Default tier: FREE / VIP / PREMIUM
 ```
-
-- **`GIFT_CODE.PREFIX`** — String prepended to generated gift codes (e.g. `HeckerVault_abc123`).
-- **`PROXY`** — Rotating proxy URL. Used by gateway plugins for making outbound check requests.
-- **`DEFAULT_USER_VALUE`** — Defaults assigned to newly registered users. `ANTISPAM` is the cooldown in seconds between commands. `STATUS` is the access tier (`FREE`, `VIP`, or `PREMIUM`).
 
 ## License
 
