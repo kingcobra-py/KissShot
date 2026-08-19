@@ -18,7 +18,10 @@ pub async fn read_document_text(bot: &Bot, message: &Message) -> Result<Option<S
     let is_text = file_name.ends_with(".txt")
         || file_name.ends_with(".csv")
         || file_name.ends_with(".log")
-        || document.mime_type.as_deref() == Some("text/plain");
+        || document
+            .mime_type
+            .as_ref()
+            .is_some_and(|m| m.as_ref() == "text/plain");
 
     if !is_text && !file_name.is_empty() {
         return Err(format!(

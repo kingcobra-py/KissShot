@@ -532,12 +532,18 @@ impl SKSessionPlugin {
             _ => "Free".to_string(),
         };
 
+        let truncated_note = if total_found > cards.len() {
+            format!("\n<b>Note:</b> Found {} cards, checked first {} (limit).", total_found, cards.len())
+        } else {
+            String::new()
+        };
+
         let reply = format!(
             "<b>SK CC Check Complete ✅</b>\n\n\
              <b>SK:</b> <code>{}</code>\n\
              <b>Proxy:</b> {}\n\
              <b>Source:</b> {}\n\
-             <b>Checked:</b> {}\n\
+             <b>Checked:</b> {}{}\n\
              <b>Time:</b> {:.2}s\n\n\
              {}\n\n\
              <b>Requested By:</b> {} [{}]\n\
@@ -546,6 +552,7 @@ impl SKSessionPlugin {
             if proxy_ref.is_some() { "On" } else { "Off" },
             if from_file { "File 📄" } else { "Text" },
             cards.len(),
+            truncated_note,
             elapsed,
             results.join("\n\n"),
             first_name,
