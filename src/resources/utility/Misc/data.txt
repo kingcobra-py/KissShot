@@ -4,10 +4,15 @@
 <i>This module has tools to extended utility functionality.</i>
 
 <b>SK Checker</b>
-    <b>Description</b>: Filters Credits Cards Out In A Pipe Format From Source
-    <b>Trigger</b>: <code>/sk</code>
+    <b>Description</b>: Validates Stripe Secret Keys (Full or Base mode)
+    <b>Trigger</b>: <code>/sk</code>, <code>/skbase</code>
     <b>Arguments</b>:
         • <code>Sk Keys</code> (required)
+        • <code>proxy http://host:port</code> (optional)
+    <b>Modes</b>:
+        • <code>/sk</code> — Full check (PM + balance + radar)
+        • <code>/skbase</code> — Base check (balance + account, bypasses PM rate limit)
+        • Proxy from config or inline <code>proxy</code> argument
 
 <b>CC Filter</b>
     <b>Description</b>: Filters Credits Cards Out In A Pipe Format From Source

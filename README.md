@@ -54,7 +54,8 @@ Plugins are registered at compile time using the `inventory` crate. Each plugin 
 | `/sta <card>`        | Check card via Stripe (alt)          |
 | `/vbv <card>`        | VBV verification check               |
 | `/gen <bin>`         | Generate cards from BIN              |
-| `/sk <key>`          | Check a Stripe secret key            |
+| `/sk <key>`          | Check a Stripe secret key (full)     |
+| `/skbase <key>`      | Base check a Stripe key (no PM)      |
 | `/skgen`             | Generate Stripe keys                 |
 | `/skscr`             | Scrape Stripe keys from Telegram     |
 | `/scr`               | Scrape card numbers from Telegram    |

