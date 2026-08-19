@@ -282,7 +282,7 @@ impl SKSessionPlugin {
         let probe = validate_sk_with_proxy_probe(&session.sk, proxy_raw).await;
         let validation = probe.validation;
         let working = probe.working_proxy.clone();
-        let proxy = working.unwrap_or_else(|| proxy_raw.to_string());
+        let proxy = working.clone().unwrap_or_else(|| proxy_raw.to_string());
 
         if !validation.live {
             let reason = if working.is_none() {
