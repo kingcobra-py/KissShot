@@ -1,10 +1,13 @@
 use crate::config::get_config;
 use crate::database::kvs::{self, get_json, set_json};
+use base64::{engine::general_purpose::STANDARD, Engine as _};
 use chrono::Utc;
 use regex::Regex;
 use reqwest;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
+use tokio::io::{AsyncReadExt, AsyncWriteExt};
+use tokio::net::TcpStream;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct UserSkSession {
@@ -181,6 +184,138 @@ fn is_proxy_connection_error(message: &str) -> bool {
         || msg.contains("invalid proxy")
 }
 
+fn is_proxy_quota_or_auth_error(message: &str) -> bool {
+    let msg = message.to_ascii_lowercase();
+    msg.contains("402")
+        || msg.contains("quota")
+        || msg.contains("407")
+        || msg.contains("authentication failed")
+        || msg.contains("payment required")
+}
+
+struct ProxyParts {
+    scheme: String,
+    host: String,
+    port: u16,
+    username: Option<String>,
+    password: Option<String>,
+}
+
+fn decode_component(value: &str) -> String {
+    urlencoding::decode(value)
+        .map(|v| v.into_owned())
+        .unwrap_or_else(|_| value.to_string())
+}
+
+fn parse_proxy_url(url: &str) -> Result<ProxyParts, String> {
+    let url = url.trim();
+    let (scheme, rest) = url
+        .split_once("://")
+        .ok_or_else(|| "Invalid proxy URL: missing scheme".to_string())?;
+
+    let (auth, hostport) = match rest.rsplit_once('@') {
+        Some((a, h)) => (Some(a), h),
+        None => (None, rest),
+    };
+
+    let (username, password) = if let Some(a) = auth {
+        match a.split_once(':') {
+            Some((u, p)) => (
+                Some(decode_component(u)),
+                Some(decode_component(p)),
+            ),
+            None => (Some(decode_component(a)), None),
+        }
+    } else {
+        (None, None)
+    };
+
+    let (host, port) = match hostport.rsplit_once(':') {
+        Some((h, p)) => {
+            let port = p
+                .parse::<u16>()
+                .map_err(|_| format!("Invalid proxy port: {}", p))?;
+            (h.to_string(), port)
+        }
+        None => return Err("Invalid proxy URL: missing port".to_string()),
+    };
+
+    Ok(ProxyParts {
+        scheme: scheme.to_string(),
+        host,
+        port,
+        username,
+        password,
+    })
+}
+
+async fn probe_http_connect(host: &str, port: u16, user: &str, pass: &str) -> Result<(), String> {
+    let addr = format!("{}:{}", host, port);
+    let mut stream = TcpStream::connect(&addr)
+        .await
+        .map_err(|e| format!("Cannot reach proxy at {} — {}", addr, e))?;
+
+    let creds = STANDARD.encode(format!("{}:{}", user, pass));
+    let request = format!(
+        "CONNECT api.stripe.com:443 HTTP/1.1\r\n\
+         Host: api.stripe.com\r\n\
+         Proxy-Authorization: Basic {}\r\n\
+         Proxy-Connection: Keep-Alive\r\n\r\n",
+        creds
+    );
+
+    stream
+        .write_all(request.as_bytes())
+        .await
+        .map_err(|e| format!("Failed to write to proxy: {}", e))?;
+
+    let mut buf = vec![0u8; 8192];
+    let n = stream
+        .read(&mut buf)
+        .await
+        .map_err(|e| format!("Failed to read proxy response: {}", e))?;
+    let response = String::from_utf8_lossy(&buf[..n]).to_string();
+
+    if response.contains(" 200 ") {
+        return Ok(());
+    }
+
+    if response.contains("402") || response.to_ascii_lowercase().contains("quota") {
+        let body = response
+            .split("\r\n\r\n")
+            .nth(1)
+            .unwrap_or("")
+            .replace('\n', " ")
+            .trim()
+            .to_string();
+        return Err(format!(
+            "Proxy quota exhausted (402). Your proxy account has no traffic balance left. {}",
+            body
+        ));
+    }
+
+    if response.contains("407") {
+        return Err("Proxy authentication failed (407). Check username and password.".into());
+    }
+
+    let status_line = response.lines().next().unwrap_or("Unknown proxy error");
+    Err(format!("Proxy rejected tunnel: {}", status_line))
+}
+
+async fn preflight_proxy(proxy_url: &str) -> Result<(), String> {
+    let parts = parse_proxy_url(proxy_url)?;
+    if parts.scheme == "http" || parts.scheme == "https" {
+        let user = parts
+            .username
+            .ok_or_else(|| "HTTP proxy requires username".to_string())?;
+        let pass = parts
+            .password
+            .ok_or_else(|| "HTTP proxy requires password".to_string())?;
+        return probe_http_connect(&parts.host, parts.port, &user, &pass).await;
+    }
+    Ok(())
+}
+
 #[derive(Debug, Clone)]
 pub struct ProxyProbeResult {
     pub validation: SkValidationResult,
@@ -192,7 +327,7 @@ pub async fn validate_sk_with_proxy_probe(sk: &str, proxy_raw: &str) -> ProxyPro
     let schemes: Vec<&str> = if let Some(ref scheme) = scheme_hint {
         vec![scheme.as_str()]
     } else {
-        vec!["socks5", "http", "socks4"]
+        vec!["http", "socks5", "socks4"]
     };
 
     let mut last = SkValidationResult {
@@ -211,6 +346,25 @@ pub async fn validate_sk_with_proxy_probe(sk: &str, proxy_raw: &str) -> ProxyPro
                 continue;
             }
         };
+
+        if scheme == "http" || scheme == "https" {
+            if let Err(e) = preflight_proxy(&proxy_url).await {
+                last.message = e.clone();
+                if is_proxy_quota_or_auth_error(&e) {
+                    return ProxyProbeResult {
+                        validation: SkValidationResult {
+                            live: false,
+                            balance: 0.0,
+                            currency: String::new(),
+                            account_id: None,
+                            message: e,
+                        },
+                        working_proxy: None,
+                    };
+                }
+                continue;
+            }
+        }
 
         let result = validate_sk(sk, Some(&proxy_url)).await;
         if result.live {

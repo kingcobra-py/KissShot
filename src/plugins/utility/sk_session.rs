@@ -4,8 +4,8 @@ use crate::logging::{get_logger, LoggerHandle};
 use crate::plugin_handler::*;
 use crate::plugins::helpers::utils::sk_utils::{
     build_session_from_validation, check_cc_with_sk, clear_session, extract_proxy, extract_sk,
-    load_session, mask_sk, normalize_proxy, save_session, validate_sk,
-    validate_sk_with_proxy_probe,
+    is_proxy_quota_or_auth_error, load_session, mask_sk, normalize_proxy, save_session,
+    validate_sk, validate_sk_with_proxy_probe,
 };
 use crate::plugins::helpers::*;
 use chrono::Utc;
@@ -273,7 +273,7 @@ impl SKSessionPlugin {
         bot.edit_message_text(
             message.chat.id,
             sent.id,
-            "<b>Testing proxy (socks5 → http → socks4)...</b>",
+            "<b>Testing proxy (http → socks5 → socks4)...</b>",
         )
         .parse_mode(ParseMode::Html)
         .await
@@ -285,13 +285,22 @@ impl SKSessionPlugin {
         let proxy = working.unwrap_or_else(|| proxy_raw.to_string());
 
         if !validation.live {
-            let reason = if probe.working_proxy.is_none() {
-                format!(
-                    "Could not connect through proxy with socks5, http, or socks4.\n\
-                     <b>Detail:</b> {}\n\n\
-                     Try: <code>/setproxy socks5 host:port:user:pass</code>",
-                    validation.message
-                )
+            let reason = if working.is_none() {
+                if is_proxy_quota_or_auth_error(&validation.message) {
+                    format!(
+                        "{}\n\n\
+                         <b>This is a proxy account issue, not a bot bug.</b>\n\
+                         Top up your Novada balance or use a fresh proxy.",
+                        validation.message
+                    )
+                } else {
+                    format!(
+                        "Could not connect through proxy with http, socks5, or socks4.\n\
+                         <b>Detail:</b> {}\n\n\
+                         Try: <code>/setproxy http host:port:user:pass</code>",
+                        validation.message
+                    )
+                }
             } else if validation.message.contains("Invalid proxy") {
                 format!("Could not parse or use proxy.\n<b>Detail:</b> {}", validation.message)
             } else {
