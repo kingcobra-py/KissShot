@@ -185,14 +185,19 @@ pub async fn validate_sk(sk: &str, proxy_url: Option<&str>) -> SkValidationResul
         .unwrap_or("usd")
         .to_uppercase();
 
-    let account_id = client
+    let account_id = match client
         .get("https://api.stripe.com/v1/account")
         .header("Authorization", format!("Bearer {}", sk))
         .send()
         .await
-        .ok()
-        .and_then(|r| r.json::<Value>().ok())
-        .and_then(|v| v.get("id").and_then(|id| id.as_str()).map(String::from));
+    {
+        Ok(resp) if resp.status().is_success() => resp
+            .json::<Value>()
+            .await
+            .ok()
+            .and_then(|v| v.get("id").and_then(|id| id.as_str()).map(String::from)),
+        _ => None,
+    };
 
     SkValidationResult {
         live: true,
