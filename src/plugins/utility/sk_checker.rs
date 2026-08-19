@@ -1,4 +1,5 @@
 use crate::config::get_config;
+use crate::plugins::helpers::utils::sk_utils::{create_client as create_sk_client, extract_proxy};
 use crate::handle_database_error;
 use crate::logging::{get_logger, LoggerHandle};
 use crate::plugin_handler::*;
@@ -62,37 +63,19 @@ impl SKCheckerPlugin {
     }
 
     fn create_client(&self, proxy_url: Option<&str>) -> Result<reqwest::Client, String> {
-        let effective_proxy = if let Some(url) = proxy_url {
-            Some(url.to_string())
-        } else {
-            get_config()
-                .ok()
-                .and_then(|cfg| cfg.config.proxy.proxy.clone())
-                .filter(|p| !p.trim().is_empty())
-        };
-
-        let mut builder = reqwest::Client::builder()
-            .timeout(std::time::Duration::from_secs(15));
-
-        if let Some(url) = effective_proxy {
-            let proxy =
-                reqwest::Proxy::all(&url).map_err(|e| format!("Failed to create proxy: {}", e))?;
-            builder = builder.proxy(proxy);
-        }
-
-        builder
-            .build()
-            .map_err(|e| format!("Failed to create HTTP client: {}", e))
+        create_sk_client(proxy_url)
     }
 
     fn parse_proxy_and_text(&self, text: &str) -> (Option<String>, String) {
-        let proxy_pattern =
-            Regex::new(r"(?i)\bproxy\s+(https?://\S+|socks4://\S+|socks5://\S+)").unwrap();
+        let proxy_pattern = Regex::new(r"(?i)\bproxy\s+(\S+)").unwrap();
         let mut proxy_url = None;
         let mut cleaned = text.to_string();
 
         if let Some(caps) = proxy_pattern.captures(&text) {
-            proxy_url = caps.get(1).map(|m| m.as_str().to_string());
+            let raw = caps.get(1).map(|m| m.as_str()).unwrap_or("");
+            proxy_url = extract_proxy(raw).or_else(|| {
+                crate::plugins::helpers::utils::sk_utils::normalize_proxy(raw).ok()
+            });
             cleaned = proxy_pattern.replace_all(&text, " ").to_string();
         }
 

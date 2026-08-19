@@ -45,10 +45,65 @@ pub fn extract_sk(text: &str) -> Option<String> {
 }
 
 pub fn extract_proxy(text: &str) -> Option<String> {
-    Regex::new(r"(?i)\b(?:https?|socks4|socks5)://\S+")
-        .ok()?
-        .find(text)
-        .map(|m| m.as_str().to_string())
+    if let Ok(re) = Regex::new(r"(?i)\b(?:https?|socks4|socks5)://\S+") {
+        if let Some(m) = re.find(text) {
+            return Some(m.as_str().to_string());
+        }
+    }
+
+    for token in text.split_whitespace() {
+        if token.contains(':') {
+            if let Ok(normalized) = normalize_proxy(token) {
+                return Some(normalized);
+            }
+        }
+    }
+
+    if text.contains(':') {
+        return normalize_proxy(text.trim()).ok();
+    }
+
+    None
+}
+
+/// Accepts:
+/// - http(s)/socks4/socks5://user:pass@host:port
+/// - user:pass@host:port
+/// - host:port:user:pass
+/// - host:port
+pub fn normalize_proxy(input: &str) -> Result<String, String> {
+    let input = input.trim().trim_matches('"').trim_matches('\'');
+
+    if input.is_empty() {
+        return Err("Empty proxy string".into());
+    }
+
+    if input.contains("://") {
+        return Ok(input.to_string());
+    }
+
+    if input.contains('@') {
+        return Ok(format!("http://{}", input));
+    }
+
+    let parts: Vec<&str> = input.split(':').collect();
+    match parts.len() {
+        2 => Ok(format!("http://{}:{}", parts[0], parts[1])),
+        4 => Ok(format!(
+            "http://{}:{}@{}:{}",
+            parts[2], parts[3], parts[0], parts[1]
+        )),
+        n if n > 4 => {
+            let pass = parts[n - 1];
+            let user = parts[n - 2];
+            let port = parts[n - 3];
+            let host = parts[..n - 3].join(":");
+            Ok(format!("http://{}:{}@{}:{}", user, pass, host, port))
+        }
+        _ => Err(
+            "Invalid proxy format. Use host:port:user:pass or http://user:pass@host:port".into(),
+        ),
+    }
 }
 
 pub fn mask_sk(sk: &str) -> String {
@@ -61,18 +116,21 @@ pub fn mask_sk(sk: &str) -> String {
 
 pub fn create_client(proxy_url: Option<&str>) -> Result<reqwest::Client, String> {
     let effective_proxy = if let Some(url) = proxy_url {
-        Some(url.to_string())
+        Some(normalize_proxy(url)?)
     } else {
         get_config()
             .ok()
             .and_then(|cfg| cfg.config.proxy.proxy.clone())
             .filter(|p| !p.trim().is_empty())
+            .map(|p| normalize_proxy(&p))
+            .transpose()?
     };
 
     let mut builder = reqwest::Client::builder().timeout(std::time::Duration::from_secs(20));
 
     if let Some(url) = effective_proxy {
-        let proxy = reqwest::Proxy::all(&url).map_err(|e| format!("Invalid proxy: {}", e))?;
+        let proxy =
+            reqwest::Proxy::all(&url).map_err(|e| format!("Invalid proxy URL ({}): {}", url, e))?;
         builder = builder.proxy(proxy);
     }
 

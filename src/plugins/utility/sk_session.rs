@@ -4,7 +4,7 @@ use crate::logging::{get_logger, LoggerHandle};
 use crate::plugin_handler::*;
 use crate::plugins::helpers::utils::sk_utils::{
     build_session_from_validation, check_cc_with_sk, clear_session, extract_proxy, extract_sk,
-    load_session, mask_sk, save_session, validate_sk,
+    load_session, mask_sk, normalize_proxy, save_session, validate_sk,
 };
 use crate::plugins::helpers::*;
 use chrono::Utc;
@@ -217,14 +217,18 @@ impl SKSessionPlugin {
             return;
         }
 
-        let proxy = extract_proxy(msg);
+        let proxy = extract_proxy(msg).or_else(|| normalize_proxy(msg.trim()).ok());
         let proxy = match proxy {
             Some(p) => p,
             None => {
                 let reply = format!(
                     "<b>Set Proxy Failed ❌</b>\n\n\
-                     <b>Usage:</b> <code>/setproxy http://user:pass@host:port</code>\n\
-                     Supports: http, https, socks4, socks5\n\n\
+                     <b>Usage:</b>\n\
+                     • <code>/setproxy host:port:user:pass</code>\n\
+                     • <code>/setproxy http://user:pass@host:port</code>\n\
+                     • <code>/setproxy socks5://user:pass@host:port</code>\n\n\
+                     <b>Example:</b>\n\
+                     <code>/setproxy c72fda....novada.pro:7777:user:pass</code>\n\n\
                      <b>Note:</b> Set your SK first with <code>/setsk</code>\n\
                      <b>Timestamp:</b> {}",
                     timestamp
@@ -269,12 +273,19 @@ impl SKSessionPlugin {
 
         let validation = validate_sk(&session.sk, Some(proxy.as_str())).await;
         if !validation.live {
+            let reason = if validation.message.contains("Invalid proxy") {
+                format!("Could not parse or use proxy.\n<b>Detail:</b> {}", validation.message)
+            } else {
+                format!(
+                    "Proxy reachable but SK check failed.\n<b>Detail:</b> {}",
+                    validation.message
+                )
+            };
             let reply = format!(
                 "<b>Set Proxy Failed ❌</b>\n\n\
-                 <b>Reason:</b> Proxy works but SK validation failed: {}\n\
-                 Or proxy cannot reach Stripe.\n\
+                 <b>Reason:</b> {}\n\
                  <b>Timestamp:</b> {}",
-                validation.message, timestamp
+                reason, timestamp
             );
             bot.edit_message_text(message.chat.id, sent.id, reply)
                 .parse_mode(ParseMode::Html)
