@@ -122,11 +122,12 @@ pub async fn handle_callback_async(
 
             if command.starts_with("folder:")
                 || command.starts_with("page:")
+                || command.starts_with("skmenu:")
                 || command.starts_with("gen_again:")
                 || command.starts_with("vbv_remove_dead_")
             {
                 println!(
-                    "🔍 Command {} starts with folder:, page:, gen_again:, or vbv_remove_dead_, checking plugin {}",
+                    "🔍 Command {} starts with folder:, page:, skmenu:, gen_again:, or vbv_remove_dead_, checking plugin {}",
                     command, plugin_name
                 );
 
@@ -138,6 +139,8 @@ pub async fn handle_callback_async(
                     commands.iter().any(|cmd| cmd.starts_with("folder:"))
                 } else if command.starts_with("page:") {
                     commands.iter().any(|cmd| cmd.starts_with("page:"))
+                } else if command.starts_with("skmenu:") {
+                    commands.iter().any(|cmd| cmd.starts_with("folder:"))
                 } else if command.starts_with("vbv_remove_dead_") {
                     commands
                         .iter()

@@ -1,4 +1,5 @@
 #![allow(unused_variables)]
+mod bot_commands;
 mod config;
 mod database;
 mod error_handler;
@@ -82,6 +83,14 @@ async fn main() {
         .info(&format!("⏱️ Timeout: {}s", config.teloxide.timeout))
         .await;
     let bot = Bot::new(&config.telegram.bot.bot_token);
+
+    if let Err(e) = bot_commands::register_bot_commands(&bot).await {
+        logger
+            .warning(&format!("Failed to register Telegram command menu: {}", e))
+            .await;
+    } else {
+        logger.info("📋 Telegram command menu registered").await;
+    }
 
     // Initialize global error handler
     let error_handler = GlobalErrorHandler::new(bot.clone()).await;

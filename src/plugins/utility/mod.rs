@@ -9,6 +9,7 @@ pub mod scr_cc;
 pub mod sk_checker;
 pub mod sk_generator;
 pub mod sk_scr;
+pub mod sk_session;
 pub mod welcome;
 
 pub use bin_lookup::*;
@@ -22,4 +23,5 @@ pub use scr_cc::*;
 pub use sk_checker::*;
 pub use sk_generator::*;
 pub use sk_scr::*;
+pub use sk_session::*;
 pub use welcome::*;

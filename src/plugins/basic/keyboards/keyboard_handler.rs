@@ -77,6 +77,7 @@ struct UptimeInfo {
     "system_dashboard",
     "extensions",
     "back",
+    "skmenu:dynamic",
     "folder:dynamic",
     "page:dynamic",
 ])]
@@ -115,6 +116,10 @@ impl KeyboardHandlerPlugin {
                 "gateways"
             };
             Self::handle_folder(bot, message, callback_data, category).await;
+            return;
+        }
+        if callback_data.starts_with("skmenu:") {
+            Self::handle_sk_menu_hint(bot, message, callback_data).await;
             return;
         }
         let timestamp = Utc::now().format("%Y-%m-%d %H:%M:%S UTC");
@@ -171,6 +176,33 @@ impl KeyboardHandlerPlugin {
             }
             _ => {}
         }
+    }
+    async fn handle_sk_menu_hint(bot: &Bot, message: &Message, callback_data: &str) {
+        let cmd = callback_data.strip_prefix("skmenu:").unwrap_or("");
+        let hint = match cmd {
+            "setsk" => "<b>/setsk</b>\n\nValidate and save your Stripe SK.\n\n<b>Usage:</b>\n<code>/setsk sk_live_xxxxx</code>",
+            "setproxy" => "<b>/setproxy</b>\n\nSet proxy for your SK session (requires SK set first).\n\n<b>Usage:</b>\n<code>/setproxy http://user:pass@host:port</code>",
+            "skchk" => "<b>/skchk</b>\n\nCheck cards using your saved SK.\n\n<b>Usage:</b>\n<code>/skchk 4111111111111111|12|26|123</code>",
+            "skstatus" => "<b>/skstatus</b>\n\nView your saved SK session, proxy, and balance.",
+            "sk" => "<b>/sk</b>\n\nFull SK check (PM + balance + radar).\n\n<b>Usage:</b>\n<code>/sk sk_live_xxxxx</code>",
+            "skbase" => "<b>/skbase</b>\n\nBase SK check — no PM, bypasses rate limit.\n\n<b>Usage:</b>\n<code>/skbase sk_live_xxxxx</code>",
+            _ => "<b>Unknown SK command</b>",
+        };
+        let keyboard = InlineKeyboardMarkup::new(vec![vec![
+            InlineKeyboardButton::new(
+                "🔙 SK Session",
+                InlineKeyboardButtonKind::CallbackData("folder:utility:SKSession".to_string()),
+            ),
+            InlineKeyboardButton::new(
+                "🏠 Menu",
+                InlineKeyboardButtonKind::CallbackData("command_palette".to_string()),
+            ),
+        ]]);
+        bot.edit_message_text(message.chat.id, message.id, hint)
+            .parse_mode(ParseMode::Html)
+            .reply_markup(keyboard)
+            .await
+            .ok();
     }
     async fn show_dashboard_menu(bot: &Bot, message: &Message) {
         let timestamp = Utc::now().format("%Y-%m-%d %H:%M:%S UTC");
@@ -458,6 +490,38 @@ impl KeyboardHandlerPlugin {
             }
             if !page_buttons.is_empty() {
                 keyboard_rows.push(page_buttons);
+            }
+            if folder_name == "SKSession" {
+                keyboard_rows.push(vec![
+                    InlineKeyboardButton::new(
+                        "1️⃣ /setsk",
+                        InlineKeyboardButtonKind::CallbackData("skmenu:setsk".to_string()),
+                    ),
+                    InlineKeyboardButton::new(
+                        "2️⃣ /setproxy",
+                        InlineKeyboardButtonKind::CallbackData("skmenu:setproxy".to_string()),
+                    ),
+                ]);
+                keyboard_rows.push(vec![
+                    InlineKeyboardButton::new(
+                        "3️⃣ /skchk",
+                        InlineKeyboardButtonKind::CallbackData("skmenu:skchk".to_string()),
+                    ),
+                    InlineKeyboardButton::new(
+                        "📋 /skstatus",
+                        InlineKeyboardButtonKind::CallbackData("skmenu:skstatus".to_string()),
+                    ),
+                ]);
+                keyboard_rows.push(vec![
+                    InlineKeyboardButton::new(
+                        "🔍 /sk",
+                        InlineKeyboardButtonKind::CallbackData("skmenu:sk".to_string()),
+                    ),
+                    InlineKeyboardButton::new(
+                        "⚡ /skbase",
+                        InlineKeyboardButtonKind::CallbackData("skmenu:skbase".to_string()),
+                    ),
+                ]);
             }
             keyboard_rows.push(vec![InlineKeyboardButton::new(
                 "🔙 Back",
