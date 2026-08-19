@@ -391,6 +391,30 @@ pub async fn validate_sk_with_proxy_probe(sk: &str, proxy_raw: &str) -> ProxyPro
     }
 }
 
+/// Stripe.js payment_user_agent sent with card payloads so the API accepts direct PM creation.
+pub const STRIPE_PAYMENT_USER_AGENT: &str =
+    "stripe.js/5816dc8686; stripe-js-v3/5816dc8686; card-element";
+
+pub fn stripe_payment_method_form<'a>(
+    number: &'a str,
+    exp_month: &'a str,
+    exp_year: &'a str,
+    cvc: &'a str,
+) -> [(&'a str, &'a str); 10] {
+    [
+        ("type", "card"),
+        ("card[number]", number),
+        ("card[exp_month]", exp_month),
+        ("card[exp_year]", exp_year),
+        ("card[cvc]", cvc),
+        ("payment_user_agent", STRIPE_PAYMENT_USER_AGENT),
+        ("guid", "NA"),
+        ("muid", "NA"),
+        ("sid", "NA"),
+        ("referrer", "https://js.stripe.com"),
+    ]
+}
+
 pub fn mask_sk(sk: &str) -> String {
     if sk.len() > 20 {
         format!("{}...{}", &sk[..12], &sk[sk.len() - 4..])
@@ -575,16 +599,12 @@ pub async fn check_cc_with_sk(
 
     let client = create_client(proxy_url)?;
 
+    let pm_form = stripe_payment_method_form(parts[0], parts[1], parts[2], parts[3]);
+
     let pm_resp = client
         .post("https://api.stripe.com/v1/payment_methods")
         .header("Authorization", format!("Bearer {}", sk))
-        .form(&[
-            ("type", "card"),
-            ("card[number]", parts[0]),
-            ("card[exp_month]", parts[1]),
-            ("card[exp_year]", parts[2]),
-            ("card[cvc]", parts[3]),
-        ])
+        .form(&pm_form)
         .send()
         .await
         .map_err(|e| format!("Stripe request failed: {}", e))?;
