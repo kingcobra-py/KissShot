@@ -184,7 +184,7 @@ fn is_proxy_connection_error(message: &str) -> bool {
         || msg.contains("invalid proxy")
 }
 
-fn is_proxy_quota_or_auth_error(message: &str) -> bool {
+pub fn is_proxy_quota_or_auth_error(message: &str) -> bool {
     let msg = message.to_ascii_lowercase();
     msg.contains("402")
         || msg.contains("quota")
