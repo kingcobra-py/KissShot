@@ -15,6 +15,10 @@
 
 <b>Step 3 — Check Cards</b>
     <b>Command</b>: <code>/skchk 4111111111111111|12|26|123</code>
+    <b>From file</b>:
+        • Send a <code>.txt</code> file with CCs (one per line)
+        • Reply to that file with <code>/skchk</code>
+        • Or attach file with caption <code>/skchk</code>
     <b>Description</b>: Checks CC using your saved SK + proxy
 
 <b>Session Management</b>

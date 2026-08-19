@@ -2,6 +2,7 @@ use crate::config::get_config;
 use crate::database::sql::fetch_user;
 use crate::logging::{get_logger, LoggerHandle};
 use crate::plugin_handler::*;
+use crate::plugins::helpers::utils::message_content::gather_text_input;
 use crate::plugins::helpers::utils::sk_utils::{
     build_session_from_validation, check_cc_with_sk, clear_session, extract_proxy, extract_sk,
     is_proxy_quota_or_auth_error, load_session, mask_sk, normalize_proxy, save_session,
@@ -417,26 +418,41 @@ impl SKSessionPlugin {
             .map(|c| c.config.regex.cc_regex.clone())
             .unwrap_or_else(|_| "[0-9]{16}[|][0-9]{1,2}[|][0-9]{2,4}[|][0-9]{3}".to_string());
 
-        let mut input = msg.to_string();
-        if input.len() < 16 {
-            if let Some(reply) = message.reply_to_message() {
-                if let Some(text) = reply.text() {
-                    input = text.to_string();
-                }
+        let input = match gather_text_input(bot, message, msg, 16).await {
+            Ok(text) => text,
+            Err(e) if !e.is_empty() => {
+                let reply = format!(
+                    "<b>SK Check Failed ❌</b>\n\n\
+                     <b>Reason:</b> {}\n\
+                     <b>Timestamp:</b> {}",
+                    e, timestamp
+                );
+                bot.edit_message_text(message.chat.id, sent.id, reply)
+                    .parse_mode(ParseMode::Html)
+                    .await
+                    .unwrap();
+                return;
             }
-        }
+            Err(_) => String::new(),
+        };
 
         let cc_re = Regex::new(&cc_regex).unwrap();
-        let cards: Vec<&str> = cc_re
+        let mut cards: Vec<String> = cc_re
             .find_iter(&input)
-            .map(|m| m.as_str())
+            .map(|m| m.as_str().to_string())
             .collect();
+
+        cards.sort();
+        cards.dedup();
 
         if cards.is_empty() {
             let reply = format!(
                 "<b>SK Check Failed ❌</b>\n\n\
                  <b>Reason:</b> No cards found.\n\
-                 <b>Usage:</b> <code>/skchk 4111111111111111|12|26|123</code>\n\
+                 <b>Usage:</b>\n\
+                 • <code>/skchk 4111...|12|26|123</code>\n\
+                 • Send a <code>.txt</code> file, then reply with <code>/skchk</code>\n\
+                 • Or attach <code>.txt</code> with caption <code>/skchk</code>\n\
                  <b>Timestamp:</b> {}",
                 timestamp
             );
@@ -451,29 +467,23 @@ impl SKSessionPlugin {
             .map(|c| c.config.limits.max_cc_chk as usize)
             .unwrap_or(5);
 
+        let total_found = cards.len();
         if cards.len() > max_cards {
-            let reply = format!(
-                "<b>SK Check Failed ❌</b>\n\n\
-                 <b>Reason:</b> Max {} cards per request.\n\
-                 <b>Found:</b> {}\n\
-                 <b>Timestamp:</b> {}",
-                max_cards,
-                cards.len(),
-                timestamp
-            );
-            bot.edit_message_text(message.chat.id, sent.id, reply)
-                .parse_mode(ParseMode::Html)
-                .await
-                .unwrap();
-            return;
+            cards.truncate(max_cards);
         }
+
+        let from_file = message.document().is_some()
+            || message
+                .reply_to_message()
+                .and_then(|m| m.document())
+                .is_some();
 
         let proxy_ref = session.proxy.as_deref();
         let start = std::time::Instant::now();
         let mut results = Vec::new();
 
         for (i, cc) in cards.iter().enumerate() {
-            let card_number = cc.split('|').next().unwrap_or(cc);
+            let card_number = cc.split('|').next().unwrap_or(cc.as_str());
             if !luhn_check(card_number) {
                 results.push(format!(
                     "<code>{}</code>\n<b>Status:</b> Invalid ❌",
@@ -491,7 +501,7 @@ impl SKSessionPlugin {
             .await
             .ok();
 
-            match check_cc_with_sk(&session.sk, proxy_ref, cc).await {
+            match check_cc_with_sk(&session.sk, proxy_ref, cc.as_str()).await {
                 Ok(result) => {
                     results.push(format!(
                         "<code>{}</code>\n<b>Status:</b> {}\n<b>Response:</b> {}",
@@ -526,6 +536,7 @@ impl SKSessionPlugin {
             "<b>SK CC Check Complete ✅</b>\n\n\
              <b>SK:</b> <code>{}</code>\n\
              <b>Proxy:</b> {}\n\
+             <b>Source:</b> {}\n\
              <b>Checked:</b> {}\n\
              <b>Time:</b> {:.2}s\n\n\
              {}\n\n\
@@ -533,6 +544,7 @@ impl SKSessionPlugin {
              <b>Timestamp:</b> {}",
             mask_sk(&session.sk),
             if proxy_ref.is_some() { "On" } else { "Off" },
+            if from_file { "File 📄" } else { "Text" },
             cards.len(),
             elapsed,
             results.join("\n\n"),
