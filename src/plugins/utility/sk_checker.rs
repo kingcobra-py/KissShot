@@ -1,5 +1,7 @@
 use crate::config::get_config;
-use crate::plugins::helpers::utils::sk_utils::{create_client as create_sk_client, extract_proxy};
+use crate::plugins::helpers::utils::sk_utils::{
+    create_client as create_sk_client, extract_proxy, stripe_payment_method_form,
+};
 use crate::handle_database_error;
 use crate::logging::{get_logger, LoggerHandle};
 use crate::plugin_handler::*;
@@ -293,16 +295,13 @@ impl SKCheckerPlugin {
             }
         };
 
+        let pm_form =
+            stripe_payment_method_form("4403934238397462", "12", "2026", "582");
+
         let pm_response = match client
             .post("https://api.stripe.com/v1/payment_methods")
             .header("Authorization", format!("Bearer {}", sk))
-            .form(&[
-                ("type", "card"),
-                ("card[number]", "4403934238397462"),
-                ("card[exp_month]", "12"),
-                ("card[exp_year]", "2026"),
-                ("card[cvc]", "582"),
-            ])
+            .form(&pm_form)
             .send()
             .await
         {
@@ -446,16 +445,13 @@ impl SKCheckerPlugin {
             }
         };
 
+        let pm_form =
+            stripe_payment_method_form("4403934238397462", "12", "2026", "582");
+
         let pm_response = match client
             .post("https://api.stripe.com/v1/payment_methods")
             .header("Authorization", format!("Bearer {}", sk))
-            .form(&[
-                ("type", "card"),
-                ("card[number]", "4403934238397462"),
-                ("card[exp_month]", "12"),
-                ("card[exp_year]", "2026"),
-                ("card[cvc]", "582"),
-            ])
+            .form(&pm_form)
             .send()
             .await
         {
