@@ -1,0 +1,32 @@
+<b>🔑 KissShot SK Session Module</b>
+
+<b>ℹ️ Information</b>:
+<i>Set your SK first (validated live), optionally add a proxy, then check cards with your key.</i>
+
+<b>Step 1 — Set SK</b>
+    <b>Command</b>: <code>/setsk sk_live_...</code>
+    <b>Description</b>: Validates SK via Stripe balance/account before saving
+    <b>Reply</b>: Also works by replying to a message containing an SK
+
+<b>Step 2 — Set Proxy</b>
+    <b>Command</b>: <code>/setproxy http://user:pass@host:port</code>
+    <b>Description</b>: Requires SK set first; re-validates SK through proxy
+    <b>Supports</b>: http, https, socks4, socks5
+
+<b>Step 3 — Check Cards</b>
+    <b>Command</b>: <code>/skchk 4111111111111111|12|26|123</code>
+    <b>Description</b>: Checks CC using your saved SK + proxy
+
+<b>Session Management</b>
+    • <code>/skstatus</code> — view saved SK (masked), proxy, balance
+    • <code>/clearsk</code> — remove SK and proxy from session
+
+<b>Direct SK Checks (no session)</b>
+    • <code>/sk sk_live_...</code> — full check (PM + balance + radar)
+    • <code>/skbase sk_live_...</code> — base check (balance + account only)
+    • <code>/sk proxy http://host:port sk_live_...</code> — inline proxy
+
+<b>Flow Example</b>
+    <code>/setsk sk_live_xxxxx</code>
+    <code>/setproxy http://1.2.3.4:8080</code>
+    <code>/skchk 4403934238397462|12|26|582</code>

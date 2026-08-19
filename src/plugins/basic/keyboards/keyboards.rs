@@ -28,6 +28,10 @@ pub async fn get_command_palette_keyboard() -> InlineKeyboardMarkup {
                 InlineKeyboardButtonKind::CallbackData("extensions".to_string()),
             ),
         ],
+        vec![InlineKeyboardButton::new(
+            "🔑 SK Session",
+            InlineKeyboardButtonKind::CallbackData("folder:utility:SKSession".to_string()),
+        )],
         vec![
             InlineKeyboardButton::new(
                 "📢 Channel",
