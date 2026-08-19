@@ -3,6 +3,16 @@
 <b>ℹ️ Information</b>: 
 <i>This module has tools to extended utility functionality.</i>
 
+<b>SK Session (Set & Check)</b>
+    <b>Description</b>: Set a validated SK + proxy, then check CCs using your SK
+    <b>Flow</b>:
+        1. <code>/setsk sk_live_...</code> — validate SK before saving
+        2. <code>/setproxy http://host:port</code> — set proxy (optional, re-validates SK)
+        3. <code>/skchk cc|mm|yy|cvv</code> — check cards using stored SK
+    <b>Other</b>:
+        • <code>/skstatus</code> — view current session
+        • <code>/clearsk</code> — remove SK and proxy
+
 <b>SK Checker</b>
     <b>Description</b>: Validates Stripe Secret Keys (Full or Base mode)
     <b>Trigger</b>: <code>/sk</code>, <code>/skbase</code>

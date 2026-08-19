@@ -56,6 +56,11 @@ Plugins are registered at compile time using the `inventory` crate. Each plugin 
 | `/gen <bin>`         | Generate cards from BIN              |
 | `/sk <key>`          | Check a Stripe secret key (full)     |
 | `/skbase <key>`      | Base check a Stripe key (no PM)      |
+| `/setsk <key>`       | Validate and save your SK            |
+| `/setproxy <url>`    | Set proxy for your SK session        |
+| `/skchk <card>`      | Check CC using your saved SK         |
+| `/skstatus`          | View saved SK session                |
+| `/clearsk`           | Clear saved SK session               |
 | `/skgen`             | Generate Stripe keys                 |
 | `/skscr`             | Scrape Stripe keys from Telegram     |
 | `/scr`               | Scrape card numbers from Telegram    |
