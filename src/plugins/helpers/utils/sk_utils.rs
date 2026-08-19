@@ -117,7 +117,8 @@ pub fn normalize_proxy_with_scheme(input: &str, scheme: &str) -> Result<String, 
         return Ok(input.to_string());
     }
 
-    let scheme = match scheme.to_ascii_lowercase().as_str() {
+    let scheme_lower = scheme.to_ascii_lowercase();
+    let scheme = match scheme_lower.as_str() {
         "socks" => "socks5",
         other => other,
     };
