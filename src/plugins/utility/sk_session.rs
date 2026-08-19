@@ -5,6 +5,7 @@ use crate::plugin_handler::*;
 use crate::plugins::helpers::utils::sk_utils::{
     build_session_from_validation, check_cc_with_sk, clear_session, extract_proxy, extract_sk,
     load_session, mask_sk, normalize_proxy, save_session, validate_sk,
+    validate_sk_with_proxy_probe,
 };
 use crate::plugins::helpers::*;
 use chrono::Utc;
@@ -217,29 +218,27 @@ impl SKSessionPlugin {
             return;
         }
 
-        let proxy = extract_proxy(msg).or_else(|| normalize_proxy(msg.trim()).ok());
-        let proxy = match proxy {
-            Some(p) => p,
-            None => {
-                let reply = format!(
-                    "<b>Set Proxy Failed ❌</b>\n\n\
-                     <b>Usage:</b>\n\
-                     • <code>/setproxy host:port:user:pass</code>\n\
-                     • <code>/setproxy http://user:pass@host:port</code>\n\
-                     • <code>/setproxy socks5://user:pass@host:port</code>\n\n\
-                     <b>Example:</b>\n\
-                     <code>/setproxy c72fda....novada.pro:7777:user:pass</code>\n\n\
-                     <b>Note:</b> Set your SK first with <code>/setsk</code>\n\
-                     <b>Timestamp:</b> {}",
-                    timestamp
-                );
-                bot.edit_message_text(message.chat.id, sent.id, reply)
-                    .parse_mode(ParseMode::Html)
-                    .await
-                    .unwrap();
-                return;
-            }
-        };
+        let proxy_raw = msg.trim();
+        if proxy_raw.is_empty() {
+            let reply = format!(
+                "<b>Set Proxy Failed ❌</b>\n\n\
+                 <b>Usage:</b>\n\
+                 • <code>/setproxy host:port:user:pass</code>\n\
+                 • <code>/setproxy socks5 host:port:user:pass</code>\n\
+                 • <code>/setproxy http://user:pass@host:port</code>\n\n\
+                 <b>Example:</b>\n\
+                 <code>/setproxy c72fda....novada.pro:7777:user:pass</code>\n\n\
+                 Bot auto-tries socks5, http, socks4 if no type specified.\n\
+                 <b>Note:</b> Set your SK first with <code>/setsk</code>\n\
+                 <b>Timestamp:</b> {}",
+                timestamp
+            );
+            bot.edit_message_text(message.chat.id, sent.id, reply)
+                .parse_mode(ParseMode::Html)
+                .await
+                .unwrap();
+            return;
+        }
 
         let mut session = match load_session(user_id).await {
             Ok(Some(s)) => s,
@@ -271,13 +270,32 @@ impl SKSessionPlugin {
             }
         };
 
-        let validation = validate_sk(&session.sk, Some(proxy.as_str())).await;
+        bot.edit_message_text(
+            message.chat.id,
+            sent.id,
+            "<b>Testing proxy (socks5 → http → socks4)...</b>",
+        )
+        .parse_mode(ParseMode::Html)
+        .await
+        .ok();
+
+        let probe = validate_sk_with_proxy_probe(&session.sk, proxy_raw).await;
+        let validation = probe.validation;
+        let proxy = probe.working_proxy.unwrap_or_else(|| proxy_raw.to_string());
+
         if !validation.live {
-            let reason = if validation.message.contains("Invalid proxy") {
+            let reason = if probe.working_proxy.is_none() {
+                format!(
+                    "Could not connect through proxy with socks5, http, or socks4.\n\
+                     <b>Detail:</b> {}\n\n\
+                     Try: <code>/setproxy socks5 host:port:user:pass</code>",
+                    validation.message
+                )
+            } else if validation.message.contains("Invalid proxy") {
                 format!("Could not parse or use proxy.\n<b>Detail:</b> {}", validation.message)
             } else {
                 format!(
-                    "Proxy reachable but SK check failed.\n<b>Detail:</b> {}",
+                    "Proxy connected but SK check failed.\n<b>Detail:</b> {}",
                     validation.message
                 )
             };
@@ -317,12 +335,19 @@ impl SKSessionPlugin {
             "<b>Proxy Set Successfully ✅</b>\n\n\
              <b>SK:</b> <code>{}</code>\n\
              <b>Proxy:</b> <code>{}</code>\n\
-             <b>SK Status:</b> Live ✅ (re-validated via proxy)\n\
+             <b>Proxy Type:</b> {}\n\
              <b>Balance:</b> {:.2} {}\n\n\
              <b>Ready:</b> <code>/skchk cc|mm|yy|cvv</code>\n\
              <b>Timestamp:</b> {}",
             mask_sk(&session.sk),
             mask_proxy(&proxy),
+            if proxy.starts_with("socks5") {
+                "SOCKS5"
+            } else if proxy.starts_with("socks4") {
+                "SOCKS4"
+            } else {
+                "HTTP"
+            },
             session.balance,
             session.currency,
             timestamp

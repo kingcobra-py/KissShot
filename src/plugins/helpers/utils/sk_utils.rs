@@ -52,7 +52,7 @@ pub fn extract_proxy(text: &str) -> Option<String> {
     }
 
     for token in text.split_whitespace() {
-        if token.contains(':') {
+        if token.contains(':') || token.to_ascii_lowercase().starts_with("socks") {
             if let Ok(normalized) = normalize_proxy(token) {
                 return Some(normalized);
             }
@@ -66,12 +66,47 @@ pub fn extract_proxy(text: &str) -> Option<String> {
     None
 }
 
+fn split_proxy_scheme(input: &str) -> (Option<String>, String) {
+    let trimmed = input.trim();
+    let lower = trimmed.to_ascii_lowercase();
+    for prefix in ["socks5://", "socks4://", "socks://", "http://", "https://"] {
+        if lower.starts_with(prefix) {
+            return (None, trimmed.to_string());
+        }
+    }
+    for prefix in ["socks5", "socks4", "socks", "http", "https"] {
+        if lower.starts_with(prefix) {
+            let rest = trimmed[prefix.len()..].trim_start();
+            if rest.is_empty() {
+                continue;
+            }
+            let scheme = if prefix == "socks" {
+                "socks5".to_string()
+            } else {
+                prefix.to_string()
+            };
+            return (Some(scheme), rest.to_string());
+        }
+    }
+    (None, trimmed.to_string())
+}
+
+fn encode_proxy_component(value: &str) -> String {
+    urlencoding::encode(value).into_owned()
+}
+
 /// Accepts:
 /// - http(s)/socks4/socks5://user:pass@host:port
+/// - socks5 host:port:user:pass
 /// - user:pass@host:port
 /// - host:port:user:pass
 /// - host:port
 pub fn normalize_proxy(input: &str) -> Result<String, String> {
+    let (scheme_hint, body) = split_proxy_scheme(input);
+    normalize_proxy_with_scheme(&body, scheme_hint.as_deref().unwrap_or("http"))
+}
+
+pub fn normalize_proxy_with_scheme(input: &str, scheme: &str) -> Result<String, String> {
     let input = input.trim().trim_matches('"').trim_matches('\'');
 
     if input.is_empty() {
@@ -82,27 +117,122 @@ pub fn normalize_proxy(input: &str) -> Result<String, String> {
         return Ok(input.to_string());
     }
 
+    let scheme = match scheme.to_ascii_lowercase().as_str() {
+        "socks" => "socks5",
+        other => other,
+    };
+
     if input.contains('@') {
-        return Ok(format!("http://{}", input));
+        let at_parts: Vec<&str> = input.splitn(2, '@').collect();
+        let creds: Vec<&str> = at_parts[0].splitn(2, ':').collect();
+        if creds.len() == 2 {
+            return Ok(format!(
+                "{}://{}:{}@{}",
+                scheme,
+                encode_proxy_component(creds[0]),
+                encode_proxy_component(creds[1]),
+                at_parts[1]
+            ));
+        }
+        return Ok(format!("{}://{}", scheme, input));
     }
 
     let parts: Vec<&str> = input.split(':').collect();
     match parts.len() {
-        2 => Ok(format!("http://{}:{}", parts[0], parts[1])),
+        2 => Ok(format!("{}://{}:{}", scheme, parts[0], parts[1])),
         4 => Ok(format!(
-            "http://{}:{}@{}:{}",
-            parts[2], parts[3], parts[0], parts[1]
+            "{}://{}:{}@{}:{}",
+            scheme,
+            encode_proxy_component(parts[2]),
+            encode_proxy_component(parts[3]),
+            parts[0],
+            parts[1]
         )),
         n if n > 4 => {
             let pass = parts[n - 1];
             let user = parts[n - 2];
             let port = parts[n - 3];
             let host = parts[..n - 3].join(":");
-            Ok(format!("http://{}:{}@{}:{}", user, pass, host, port))
+            Ok(format!(
+                "{}://{}:{}@{}:{}",
+                scheme,
+                encode_proxy_component(user),
+                encode_proxy_component(pass),
+                host,
+                port
+            ))
         }
         _ => Err(
             "Invalid proxy format. Use host:port:user:pass or http://user:pass@host:port".into(),
         ),
+    }
+}
+
+fn is_proxy_connection_error(message: &str) -> bool {
+    let msg = message.to_ascii_lowercase();
+    msg.contains("request failed")
+        || msg.contains("error sending request")
+        || msg.contains("connect")
+        || msg.contains("proxy")
+        || msg.contains("tunnel")
+        || msg.contains("timed out")
+        || msg.contains("connection reset")
+        || msg.contains("invalid proxy")
+}
+
+#[derive(Debug, Clone)]
+pub struct ProxyProbeResult {
+    pub validation: SkValidationResult,
+    pub working_proxy: Option<String>,
+}
+
+pub async fn validate_sk_with_proxy_probe(sk: &str, proxy_raw: &str) -> ProxyProbeResult {
+    let (scheme_hint, body) = split_proxy_scheme(proxy_raw);
+    let schemes: Vec<&str> = if let Some(ref scheme) = scheme_hint {
+        vec![scheme.as_str()]
+    } else {
+        vec!["socks5", "http", "socks4"]
+    };
+
+    let mut last = SkValidationResult {
+        live: false,
+        balance: 0.0,
+        currency: String::new(),
+        account_id: None,
+        message: "Proxy validation failed".to_string(),
+    };
+
+    for scheme in schemes {
+        let proxy_url = match normalize_proxy_with_scheme(&body, scheme) {
+            Ok(url) => url,
+            Err(e) => {
+                last.message = e;
+                continue;
+            }
+        };
+
+        let result = validate_sk(sk, Some(&proxy_url)).await;
+        if result.live {
+            return ProxyProbeResult {
+                validation: result,
+                working_proxy: Some(proxy_url),
+            };
+        }
+
+        if is_proxy_connection_error(&result.message) {
+            last = result;
+            continue;
+        }
+
+        return ProxyProbeResult {
+            validation: result,
+            working_proxy: Some(proxy_url),
+        };
+    }
+
+    ProxyProbeResult {
+        validation: last,
+        working_proxy: None,
     }
 }
 
@@ -116,17 +246,29 @@ pub fn mask_sk(sk: &str) -> String {
 
 pub fn create_client(proxy_url: Option<&str>) -> Result<reqwest::Client, String> {
     let effective_proxy = if let Some(url) = proxy_url {
-        Some(normalize_proxy(url)?)
+        if url.contains("://") {
+            Some(url.to_string())
+        } else {
+            Some(normalize_proxy(url)?)
+        }
     } else {
         get_config()
             .ok()
             .and_then(|cfg| cfg.config.proxy.proxy.clone())
             .filter(|p| !p.trim().is_empty())
-            .map(|p| normalize_proxy(&p))
+            .map(|p| {
+                if p.contains("://") {
+                    Ok(p)
+                } else {
+                    normalize_proxy(&p)
+                }
+            })
             .transpose()?
     };
 
-    let mut builder = reqwest::Client::builder().timeout(std::time::Duration::from_secs(20));
+    let mut builder = reqwest::Client::builder()
+        .connect_timeout(std::time::Duration::from_secs(20))
+        .timeout(std::time::Duration::from_secs(45));
 
     if let Some(url) = effective_proxy {
         let proxy =
