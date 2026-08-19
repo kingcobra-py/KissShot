@@ -1,3 +1,4 @@
+use teloxide::payloads::SetMyCommandsSetters;
 use teloxide::types::{BotCommand, BotCommandScope};
 use teloxide::{prelude::Requester, Bot};
 
